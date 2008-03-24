@@ -82,10 +82,7 @@ public class ExecutionPlanPage extends AbstractDBPreferenceFieldPage implements 
         // composite for global options
         Composite global = new Composite(comp, SWT.NONE);
         global.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-        GridLayout globalLayout = new GridLayout();
-        globalLayout.marginHeight = 0;
-        globalLayout.marginWidth = 0;
-        global.setLayout(globalLayout);
+        global.setLayout(new GridLayout());
 
         _planViewOrientation = new Group(global, SWT.NONE);
         _planViewOrientation.setText(Messages.getString("ExecutionPlanPage.orientation.group.name")); //$NON-NLS-1$
