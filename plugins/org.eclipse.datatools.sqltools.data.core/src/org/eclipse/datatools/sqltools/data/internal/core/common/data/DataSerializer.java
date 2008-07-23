@@ -157,7 +157,7 @@ public class DataSerializer {
     	}
     	if (val instanceof Date)
     	{
-    		return ((Date)val).toString();
+    		return DateFormat.getDateInstance(DateFormat.SHORT).format(val);
     	}
     	return val.toString();
     }
@@ -175,7 +175,7 @@ public class DataSerializer {
     	}
     	if (val instanceof Time)
     	{
-    		return ((Time)val).toString();    		
+    		return DateFormat.getTimeInstance(DateFormat.MEDIUM).format(val);    		
     	}
     	return val.toString();
     }
@@ -193,7 +193,7 @@ public class DataSerializer {
     	}
     	if (val instanceof Timestamp)
     	{
-    		return ((Timestamp)val).toString();
+    		return DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM).format(val);
     	}
     	return val.toString();
     }
