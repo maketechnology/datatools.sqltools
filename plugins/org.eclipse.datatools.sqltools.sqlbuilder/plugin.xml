@@ -12,8 +12,7 @@
             default="true"
             extensions="sql"
             contributorClass="org.eclipse.datatools.sqltools.sqlbuilder.actions.SQLBuilderActionBarContributor"
-            name="%_UI_BUILDER_NAME"
-            matchingStrategy="org.eclipse.datatools.sqltools.sqlbuilder.SQLBuilderMatchingStrategy">
+            name="%_UI_BUILDER_NAME">
       </editor>
    </extension>
    <!-- preference initializer -->

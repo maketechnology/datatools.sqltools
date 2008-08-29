@@ -13,7 +13,6 @@ package org.eclipse.datatools.sqltools.sqlbuilder.actions;
 import org.eclipse.datatools.sqltools.sqlbuilder.Messages;
 import org.eclipse.datatools.sqltools.sqlbuilder.dialogs.SQLBuilderRevertActionDialog;
 import org.eclipse.datatools.sqltools.sqlbuilder.views.source.SQLSourceViewer;
-import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
 
@@ -52,7 +51,7 @@ public class RevertToPreviousAction extends SQLBuilderAction {
         Shell shell = getShell();
         if (shell != null) {
             if (fRevertDialog == null) {
-                String[] buttons = { IDialogConstants.OK_LABEL, IDialogConstants.CANCEL_LABEL };
+                String[] buttons = { "OK", "Cancel" }; //$NON-NLS-1$ //$NON-NLS-2$
                 fRevertDialog = new SQLBuilderRevertActionDialog(shell,
                         Messages._UI_REVERT_TO_LAST_CORRECT_SOURCE, null, null, MessageDialog.NONE, buttons, 0);   
             }
