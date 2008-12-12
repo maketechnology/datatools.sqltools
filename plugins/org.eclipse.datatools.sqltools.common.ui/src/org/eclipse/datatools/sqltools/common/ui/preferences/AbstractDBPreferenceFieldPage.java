@@ -141,7 +141,7 @@ public abstract class AbstractDBPreferenceFieldPage extends FieldEditorPreferenc
             public int compare(Object o1, Object o2)
             {
                 // Replace the '&' in the label because of the short cut key.Otherwise, for instance, the "AS&E" will be before "ASA".
-                int result = o1.toString().replace("&", "").compareTo(o2.toString().replace("&", ""));
+                int result = o1.toString().replaceAll("&", "").compareTo(o2.toString().replaceAll("&", ""));
                 return result == 0 ? 0 : ( result > 0 ? 1 : -1);
             }
 
