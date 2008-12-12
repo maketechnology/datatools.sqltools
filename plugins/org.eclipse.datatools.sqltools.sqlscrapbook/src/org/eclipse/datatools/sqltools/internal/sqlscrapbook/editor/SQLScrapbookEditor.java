@@ -116,6 +116,19 @@ public class SQLScrapbookEditor extends SQLEditor {
                 connBar.refreshConnectionStatus();
             }
         }
+
+        protected void handleDispose()
+		{
+			if (this.getDocument() != null
+					&& SQLScrapbookEditor.this._fSQLUpdater != null)
+			{
+				this.getDocument().removeDocumentListener(
+						SQLScrapbookEditor.this._fSQLUpdater);
+			}
+
+			super.handleDispose();
+		}
+        
     }
     
 	private IAction _setConnectionInfoAction;
