@@ -45,10 +45,12 @@ public class ResultSetReader {
 	    if (type == Types.LONGVARCHAR) {
 	    	return rs.getString(column+1);
 	    }
-	    
-	    if (type == Types.DECIMAL) {
-	    	return rs.getBigDecimal(column+1).toPlainString();
-	    }
+	    // Hui Cao: the following lines are added in 256090, but it requires
+		// JDK1.5+, while DTP1.6 has to maintain JDK1.4.2 backward
+		// compatibility. So commented it out.
+		//	    if (type == Types.DECIMAL) {
+	    //	return rs.getBigDecimal(column+1).toPlainString();
+	    //}
 	
 	    Object o = rs.getObject(column+1);
 	    if (o==null)
