@@ -134,12 +134,12 @@ public class DelimeterSelection implements ISQLSelection
         }
         else
         {
-            if (lastWord.contains(term.toLowerCase()))
+            if (lastWord.indexOf(term.toLowerCase()) > -1)
             {
                 endOffset = lastStart + lastWord.indexOf(term.toLowerCase());
                 isRemoved = true;
             }
-            else if (lastWord.contains(term.toUpperCase()))
+            else if (lastWord.indexOf(term.toUpperCase()) > -1)
             {
                 endOffset = lastStart + lastWord.indexOf(term.toUpperCase());
                 isRemoved = true;
@@ -221,7 +221,7 @@ public class DelimeterSelection implements ISQLSelection
                         }
                     }
 
-                    if (nextWord.contains(terminators[i].toLowerCase()))
+                    if (nextWord.indexOf(terminators[i].toLowerCase()) > -1)
                     {
                         int off;
                         if (!forward)
@@ -237,7 +237,7 @@ public class DelimeterSelection implements ISQLSelection
                         findTerm = true;
                         break;
                     }
-                    else if (nextWord.contains(terminators[i].toUpperCase()))
+                    else if (nextWord.indexOf(terminators[i].toUpperCase()) > -1)
                     {
                         int off;
                         if (!forward)
