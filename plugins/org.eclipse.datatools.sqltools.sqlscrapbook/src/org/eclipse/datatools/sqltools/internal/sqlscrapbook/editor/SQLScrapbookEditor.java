@@ -123,15 +123,19 @@ public class SQLScrapbookEditor extends SQLEditor {
                 connBar.refreshConnectionStatus();
             }
         }
-        
+
         protected void handleDispose()
-        {
-            if(this.getDocument()!= null && SQLScrapbookEditor.this._fSQLUpdater != null)
-            {
-                this.getDocument().removeDocumentListener(SQLScrapbookEditor.this._fSQLUpdater);
-            }
-            super.handleDispose();
-        }
+		{
+			if (this.getDocument() != null
+					&& SQLScrapbookEditor.this._fSQLUpdater != null)
+			{
+				this.getDocument().removeDocumentListener(
+						SQLScrapbookEditor.this._fSQLUpdater);
+			}
+
+			super.handleDispose();
+		}
+        
     }
     
 	private IAction _setConnectionInfoAction;
@@ -288,21 +292,23 @@ public class SQLScrapbookEditor extends SQLEditor {
         }
     }
 
-    public void refreshMatcher()
-    {
-        // When the connection profile is changed, the corresponding matcher will be set.
-        SQLDevToolsConfiguration sqlDevToolsConfig = SQLToolsFacade.getConfiguration(getDBType(),
-                getDatabaseIdentifier());
+    public void refreshMatcher() {
+		// When the connection profile is changed, the corresponding matcher
+		// will be set.
+		SQLDevToolsConfiguration sqlDevToolsConfig = SQLToolsFacade
+				.getConfiguration(getDBType(), getDatabaseIdentifier());
 
-        // It needs support by sql editor service of each specific database.
-        ICharacterPairMatcher matcher = sqlDevToolsConfig.getSQLEditorService().getSQLPairMatcher();
-        
-        // If it's not supported, use default generic sql matcher.
-        if(matcher == null)
-        {
-            matcher = new GenericSQLPairMatcher(GenericSQLMatchingPairs.getInstance());
-        }
-        
-        SQLScrapbookEditor.this.setPairMatcher(matcher);
-    }
+		// It needs support by sql editor service of each specific database.
+		ICharacterPairMatcher matcher = sqlDevToolsConfig.getSQLEditorService()
+				.getSQLPairMatcher();
+
+		// If it's not supported, use default generic sql matcher.
+		if (matcher == null) {
+			matcher = new GenericSQLPairMatcher(GenericSQLMatchingPairs
+					.getInstance());
+		}
+
+		SQLScrapbookEditor.this.setPairMatcher(matcher);
+	}
+    
 }
