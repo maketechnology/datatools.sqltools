@@ -135,4 +135,19 @@ public class ResultSetViewerRegistryReader
 			// problem with creating executable, don't add to list
 		}
 	}
+	
+	public void removeViewerProviderContents()
+	{
+	   List viewerList = getResultSetViewers();
+	   for (int i=0; i < viewerList.size(); i++)
+	   {
+	       ResultSetViewerDescriptor desc = (ResultSetViewerDescriptor) viewerList.get(i);
+	       ExternalResultSetViewerProvider provider = desc.getViewerProvider();
+	       if (provider != null) {
+	           provider.setResult(null);
+	           provider.setResultInstance(null);
+	       }
+	   }
+	}
+	
 }
