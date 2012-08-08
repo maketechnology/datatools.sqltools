@@ -1,6 +1,6 @@
 plugin@org.eclipse.datatools.sqltools.common.ui=GIT,tag=v200906022302,repo=git://git.eclipse.org/gitroot/datatools/org.eclipse.datatools.sqltools.git,path=plugins/org.eclipse.datatools.sqltools.common.ui
 plugin@org.eclipse.datatools.sqltools.data.core=GIT,tag=v201208062315,repo=git://git.eclipse.org/gitroot/datatools/org.eclipse.datatools.sqltools.git,path=plugins/org.eclipse.datatools.sqltools.data.core
-plugin@org.eclipse.datatools.sqltools.data.ui=GIT,tag=v201005250945,repo=git://git.eclipse.org/gitroot/datatools/org.eclipse.datatools.sqltools.git,path=plugins/org.eclipse.datatools.sqltools.data.ui
+plugin@org.eclipse.datatools.sqltools.data.ui=GIT,tag=v201208071745,repo=git://git.eclipse.org/gitroot/datatools/org.eclipse.datatools.sqltools.git,path=plugins/org.eclipse.datatools.sqltools.data.ui
 plugin@org.eclipse.datatools.sqltools.ddlgen.ui=GIT,tag=v201207311645,repo=git://git.eclipse.org/gitroot/datatools/org.eclipse.datatools.sqltools.git,path=plugins/org.eclipse.datatools.sqltools.ddlgen.ui
 plugin@org.eclipse.datatools.sqltools.debugger.core=GIT,tag=v201005250945,repo=git://git.eclipse.org/gitroot/datatools/org.eclipse.datatools.sqltools.git,path=plugins/org.eclipse.datatools.sqltools.debugger.core
 plugin@org.eclipse.datatools.sqltools.debugger.core.ui=GIT,tag=v201003161000,repo=git://git.eclipse.org/gitroot/datatools/org.eclipse.datatools.sqltools.git,path=plugins/org.eclipse.datatools.sqltools.debugger.core.ui
