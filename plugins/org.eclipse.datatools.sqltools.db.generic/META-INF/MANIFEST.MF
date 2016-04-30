@@ -9,7 +9,7 @@ Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.datatools.sqltools.sql,
  org.eclipse.datatools.sqltools.editor.core,
- org.eclipse.jface.text
+ org.eclipse.text;bundle-version="3.5.400"
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.datatools.sqltools.db.generic;x-friends:="org.eclipse.datatools.sqltools.db.derby",

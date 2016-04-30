@@ -17,7 +17,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.datatools.modelbase.sql.query,
  org.eclipse.datatools.sqltools.sql,
  org.eclipse.text,
- org.eclipse.datatools.sqltools.result
+ org.eclipse.datatools.sqltools.result,
+ com.ibm.icu;bundle-version="54.1.1"
 Import-Package: com.ibm.icu.text,
  com.ibm.icu.util
 Export-Package: org.eclipse.datatools.sqltools.core,
