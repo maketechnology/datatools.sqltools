@@ -111,13 +111,13 @@ public class ExecutionPlansDrawer
         _comboQuery.setLayoutData(gridData11);
         _comboQuery.addSelectionListener(_comboSelectionListener);
         //tooltip to show full sql statement for every combo item
-        _comboQuery.addMouseTrackListener(new MouseTrackAdapter()
-        {
-            public void mouseHover(MouseEvent e)
-            {
-                _comboQuery.setToolTipText(addLineSeparator(_planDocs[_comboQuery.getSelectionIndex()].getName()));
-            }   
-        });
+//        _comboQuery.addMouseTrackListener(new MouseTrackAdapter()
+//        {
+//            public void mouseHover(MouseEvent e)
+//            {
+//                _comboQuery.setToolTipText(addLineSeparator(_planDocs[_comboQuery.getSelectionIndex()].getName()));
+//            }   
+//        });
     }
 
     /**

@@ -117,7 +117,7 @@ public class PlanView extends ViewPart
         // Page 3 of page book (text Control )
         _textPlan = new Text(_fPagebook, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
         _textPlan.setEditable(false);
-        _textPlan.setBackground(ColorConstants.white);
+        _textPlan.setBackground(ColorConstants.white());
         FontData fd = new FontData(FONT_STYLE, FONT_SIZE, SWT.NORMAL);
         final Font font = new Font(_textPlan.getDisplay(), fd);
         _textPlan.setFont(font);

@@ -223,10 +223,10 @@ public class TreePlanDrawer extends AbstractPlanDrawer
                 CompartmentFigure figure = (CompartmentFigure) _last;
                 figure.getNameLabel().setIcon(null);
                 figure.getNameLabel().setText(" " + figure.getNameLabel().getText());
-                _last.setBackgroundColor(ColorConstants.menuBackground);
-                _last.setForegroundColor(ColorConstants.black);
+                _last.setBackgroundColor(ColorConstants.menuBackground());
+                _last.setForegroundColor(ColorConstants.black());
             }
-            f.setBackgroundColor(ColorConstants.lightBlue);
+            f.setBackgroundColor(ColorConstants.lightBlue());
             CompartmentFigure figure = (CompartmentFigure) f;
             figure.getNameLabel().setIcon(Images.get(Images.IMG_CURRENT_OPERATOR));
             figure.getNameLabel().setText(figure.getNameLabel().getText().trim());
@@ -265,7 +265,7 @@ public class TreePlanDrawer extends AbstractPlanDrawer
         _lws.getRootFigure().erase();
         ScrollPane scroll = new ScrollPane();
         IFigure panel = new Panel();
-        panel.setBackgroundColor(ColorConstants.white);
+        panel.setBackgroundColor(ColorConstants.white());
         scroll.setContents(panel);
         scroll.setBorder(new SimpleLoweredBorder());
         _lws.setContents(scroll);
@@ -350,10 +350,10 @@ public class TreePlanDrawer extends AbstractPlanDrawer
             layout.setMinorAlignment(ToolbarLayout.ALIGN_TOPLEFT);
             layout.setStretchMinorAxis(false);
             layout.setSpacing(2);
-            setBorder(new LineBorder(ColorConstants.black, 1));
+            setBorder(new LineBorder(ColorConstants.black(), 1));
 
             setLayoutManager(layout);
-            setBackgroundColor(ColorConstants.menuBackground);
+            setBackgroundColor(ColorConstants.menuBackground());
             setOpaque(true);
             _nameLabel = new Label(" " + name);
             add(_nameLabel);
@@ -363,7 +363,7 @@ public class TreePlanDrawer extends AbstractPlanDrawer
                 if(isLabel1Highlighted)
                 {
                     _label1.setFont(_objFont);
-                    _label1.setForegroundColor(ColorConstants.blue);
+                    _label1.setForegroundColor(ColorConstants.blue());
                 }
                 add(_label1);
             }
@@ -374,7 +374,7 @@ public class TreePlanDrawer extends AbstractPlanDrawer
                 {
                     Font objFont = new Font(null, "Arial", 10, SWT.BOLD);
                     _label2.setFont(objFont);
-                    _label2.setForegroundColor(ColorConstants.blue);
+                    _label2.setForegroundColor(ColorConstants.blue());
                 }
                 add(_label2);
             }

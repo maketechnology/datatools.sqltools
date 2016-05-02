@@ -104,7 +104,7 @@ public class SavePlanAction extends Action
         if (backInputDlg)
         {
             FileDialog dlg = new FileDialog(PlanViewPlugin.getActiveWorkbenchShell(), SWT.SAVE);
-            dlg.setFileName(file);
+//            dlg.setFileName(file);
             String retFile = dlg.open();
             if(retFile == null)
             {
@@ -117,7 +117,7 @@ public class SavePlanAction extends Action
         {
             String[] buttons = new String[]
             {
-                IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL, IDialogConstants.CANCEL_LABEL
+                IDialogConstants.get().YES_LABEL, IDialogConstants.get().NO_LABEL, IDialogConstants.get().CANCEL_LABEL
             }
             ;
             String question = NLS.bind(Messages.SavePlanAction_overwrite_q, (new Object[]
