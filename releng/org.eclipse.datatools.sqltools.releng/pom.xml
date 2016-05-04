@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+    http://maven.apache.org/maven-v4_0_0.xsd"> 
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>org.eclipse.datatools.sqltools.releng</artifactId>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.eclipse.datatools</groupId>
+        <artifactId>org.eclipse.datatools.parent</artifactId>
+        <version>1.13.0-SNAPSHOT</version>
+        <relativePath>../../../org.eclipse.datatools.build/releng/org.eclipse.datatools.releng</relativePath>
+    </parent>
+
+    <modules>
+        <module>../../plugins/org.eclipse.datatools.sqltools.data.core</module>
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.data.ui</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.tabledataeditor</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.result.ui</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.common.ui</module-->
+        <module>../../plugins/org.eclipse.datatools.sqltools.sql</module>
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.plan</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.editor.core</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.sqleditor</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.ddlgen.ui</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.editor.core.ui</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.sql.ui</module-->
+        <module>../../plugins/org.eclipse.datatools.sqltools.parsers.sql.lexer</module>
+        <module>../../plugins/org.eclipse.datatools.sqltools.parsers.sql.query</module>
+        <module>../../plugins/org.eclipse.datatools.sqltools.parsers.sql.xml.query</module>
+        <module>../../plugins/org.eclipse.datatools.sqltools.parsers.sql</module>
+        <module>../../plugins/org.eclipse.datatools.sqltools.result</module>
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.schemaobjecteditor</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.schemaobjecteditor.ui</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.schemaobjecteditor.ui.pages</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.sqlbuilder</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.db.generic</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.debugger.core</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.debugger.core.ui</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.routineeditor</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.routineeditor.ui</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.sqlscrapbook</module-->
+
+    </modules>
+</project>
