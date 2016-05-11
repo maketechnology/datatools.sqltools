@@ -9,10 +9,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.eclipse.jface.text.source.ISharedTextColors;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.rap.*;
 
 /**
  * Manages SWT color objects. Until the <code>dispose</code> method is called, 
@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.Display;
  * <p>
  * @author Shi-feng Yu
  */
-public class SharedTextColors implements ISharedTextColors
+public class SharedTextColors
 {
 
     /** The display table. */

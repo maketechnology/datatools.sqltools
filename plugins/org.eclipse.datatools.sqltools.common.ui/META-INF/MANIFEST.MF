@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.ui;resolution:=optional,
  org.eclipse.datatools.help,
  org.eclipse.ui.forms;resolution:=optional,
  org.eclipse.rap.ui.forms;bundle-version="3.0.2";resolution:=optional,
- org.eclipse.rap.ui.forms.source;bundle-version="3.0.2"
+ org.eclipse.rap.ui.forms.source;bundle-version="3.0.2",
+ org.eclipse.datatools.sqltools.result.ui
 Import-Package: com.ibm.icu.text,
  com.ibm.icu.util
 Export-Package: org.eclipse.datatools.sqltools.common.core.tableviewer,

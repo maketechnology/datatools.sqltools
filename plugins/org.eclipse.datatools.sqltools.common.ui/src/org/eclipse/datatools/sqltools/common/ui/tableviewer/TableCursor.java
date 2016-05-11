@@ -413,7 +413,11 @@ public class TableCursor extends Canvas
                     {
                         index = 0;
                     }
-                    int leadKey = (getStyle() & SWT.RIGHT_TO_LEFT) != 0 ? SWT.ARROW_RIGHT : SWT.ARROW_LEFT;
+                    int leadKey;
+					if ((getStyle() & SWT.RIGHT_TO_LEFT) != 0)
+						leadKey = SWT.ARROW_RIGHT;
+					else
+						leadKey = SWT.ARROW_LEFT;
                     if (event.keyCode == leadKey)
                     {
                         setRowColumn(rowIndex, order[Math.max(0, index - 1)], true);
