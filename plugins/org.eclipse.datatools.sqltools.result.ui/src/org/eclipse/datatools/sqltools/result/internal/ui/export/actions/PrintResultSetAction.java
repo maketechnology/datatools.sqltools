@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.datatools.sqltools.result.internal.ui.export.actions;
 
+import javax.swing.text.StyleContext;
+
 import org.eclipse.datatools.help.HelpUtil;
 import org.eclipse.datatools.sqltools.result.IResultSetObject;
 import org.eclipse.datatools.sqltools.result.internal.export.TextOutputter;
@@ -19,7 +21,6 @@ import org.eclipse.datatools.sqltools.result.ui.IHelpConstants;
 import org.eclipse.datatools.sqltools.result.ui.ResultsViewUIPlugin;
 import org.eclipse.jface.action.Action;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.printing.PrintDialog;
@@ -68,8 +69,8 @@ public class PrintResultSetAction extends Action
         if(data != null)
         {
             Printer printer = new Printer(data);
-            StyledText styledText = new StyledText(_parent, SWT.NONE);
-            styledText.setVisible(false);
+            //StyledText styledText = new StyleContext(_parent, SWT.NONE);
+            //styledText.setVisible(false);
             TextOutputter outputter = new TextOutputter();
             String printString = "";
             if(_result != null)
@@ -86,13 +87,13 @@ public class PrintResultSetAction extends Action
                 printer.dispose();
                 return;
             }
-            FontData fd = new FontData(FONT_STYLE, FONT_SIZE, SWT.NORMAL);
-            Font font = new Font(styledText.getDisplay(), fd);
-            styledText.setFont(font);
-            styledText.setText(printString);
-            styledText.print(printer).run();
+            //FontData fd = new FontData(FONT_STYLE, FONT_SIZE, SWT.NORMAL);
+            //Font font = new Font(styledText.getDisplay(), fd);
+            //styledText.setFont(font);
+            //styledText.setText(printString);
+            //styledText.print(printer).run();
             printer.dispose();
-            font.dispose();
+            //font.dispose();
         }
     }
 }

@@ -84,7 +84,6 @@ public class AccessibleTableViewer extends StructuredViewer
 
     private Color                _foregroundColor = null;
     
-    private YES_LABEL
 
     /**
      * Context menu group for cut/copy/paste related actions. Value: <code>"group.copy"</code>
@@ -322,7 +321,7 @@ public class AccessibleTableViewer extends StructuredViewer
         {
             String[] buttons = new String[]
             {
-                IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL
+                IDialogConstants.get().YES_LABEL, IDialogConstants.get().NO_LABEL
             }
             ;
 
@@ -464,7 +463,7 @@ public class AccessibleTableViewer extends StructuredViewer
         {
             String[] buttons = new String[]
             {
-                IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL, IDialogConstants.CANCEL_LABEL
+                IDialogConstants.get().YES_LABEL, IDialogConstants.get().NO_LABEL, IDialogConstants.get().CANCEL_LABEL
             }
             ;
 

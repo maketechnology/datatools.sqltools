@@ -94,7 +94,7 @@ public class WizardNewFileCreationPage extends WizardPage implements Listener
     // widgets
     private ResourceAndContainerGroup _resourceGroup;
     private Button                    _advancedButton;
-    private CreateLinkedResourceGroup _linkedResourceGroup;
+ //   private CreateLinkedResourceGroup _linkedResourceGroup;
     private Composite                 _linkedResourceParent;
     private Composite                 _linkedResourceComposite;
 
@@ -158,15 +158,15 @@ public class WizardNewFileCreationPage extends WizardPage implements Listener
             }
             );
         }
-        _linkedResourceGroup = new CreateLinkedResourceGroup(IResource.FILE, new Listener()
-        {
-            public void handleEvent(Event e)
-            {
-                setPageComplete(validatePage());
-                _firstLinkCheck = false;
-            }
-        }, null
-        );
+//       _linkedResourceGroup = new CreateLinkedResourceGroup(IResource.FILE, new Listener()
+//        {
+//            public void handleEvent(Event e)
+//            {
+//                setPageComplete(validatePage());
+//                _firstLinkCheck = false;
+//            }
+//        }, null
+//        );
     }
 
     /**
@@ -281,55 +281,55 @@ public class WizardNewFileCreationPage extends WizardPage implements Listener
      */
     protected void createLinkTarget()
     {
-        try
-        {
-            //Eclipse 3.2 and before
-            Method getLinkTarget = CreateLinkedResourceGroup.class.getMethod("getLinkTarget", null);
-            String linkTarget;
-            linkTarget = (String)getLinkTarget.invoke(_linkedResourceGroup, null);
-            if (linkTarget != null)
-            {
-                _linkTargetPath = new Path(linkTarget);
-            }
-            else
-            {
-                _linkTargetPath = null;
-            }
-        }
-        catch (NoSuchMethodException e)
-        {
-            // Eclipse 3.3
-            try
-            {
-                //Eclipse 3.2 and before
-                Method getLinkTargetURI = CreateLinkedResourceGroup.class.getMethod("getLinkTargetURI", null);
-                URI linkTargetURI = (URI)getLinkTargetURI.invoke(_linkedResourceGroup, null);
-                if (linkTargetURI != null)
-                {
-                    _linkTargetPath = URIUtil.toPath(linkTargetURI);
-                }
-                else
-                {
-                    _linkTargetPath = null;
-                }
-            }
-            catch (Exception ee)
-            {
-                Activator.getDefault().log(
-                        NLS.bind(Messages.WizardNewFileCreationPage_internalErrorMessage,  
-                        getClass().getName(), ee
-                    ));//$NON-NLS-1$
-
-            }
-        }
-        catch (Exception e)
-        {
-            Activator.getDefault().log(
-                    NLS.bind(Messages.WizardNewFileCreationPage_internalErrorMessage,  
-                    getClass().getName(), e
-                ));//$NON-NLS-1$
-
-        }
+//        try
+//        {
+//            //Eclipse 3.2 and before
+//            //Method getLinkTarget = CreateLinkedResourceGroup.class.getMethod("getLinkTarget", null);
+//            String linkTarget;
+//            //linkTarget = (String)getLinkTarget.invoke(_linkedResourceGroup, null);
+//            if (linkTarget != null)
+//            {
+//                _linkTargetPath = new Path(linkTarget);
+//            }
+//            else
+//            {
+//                _linkTargetPath = null;
+//            }
+//        }
+//        catch (NoSuchMethodException e)
+//        {
+//            // Eclipse 3.3
+//            try
+//            {
+//                //Eclipse 3.2 and before
+//                Method getLinkTargetURI = CreateLinkedResourceGroup.class.getMethod("getLinkTargetURI", null);
+//                URI linkTargetURI = (URI)getLinkTargetURI.invoke(_linkedResourceGroup, null);
+//                if (linkTargetURI != null)
+//                {
+//                    _linkTargetPath = URIUtil.toPath(linkTargetURI);
+//                }
+//                else
+//                {
+//                    _linkTargetPath = null;
+//                }
+//            }
+//            catch (Exception ee)
+//            {
+//                Activator.getDefault().log(
+//                        NLS.bind(Messages.WizardNewFileCreationPage_internalErrorMessage,  
+//                        getClass().getName(), ee
+//                    ));//$NON-NLS-1$
+//
+//            }
+//        }
+//        catch (Exception e)
+//        {
+//            Activator.getDefault().log(
+//                    NLS.bind(Messages.WizardNewFileCreationPage_internalErrorMessage,  
+//                    getClass().getName(), e
+//                ));//$NON-NLS-1$
+//
+//        }
     }
 
     /**
@@ -364,60 +364,60 @@ public class WizardNewFileCreationPage extends WizardPage implements Listener
         final InputStream initialContents = getInitialContents();
 
         createLinkTarget();
-        WorkspaceModifyOperation op = new WorkspaceModifyOperation(null)
-        {
-            protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException
-            {
-                try
-                {
-                    monitor.beginTask(Messages.WizardNewFileCreationPage_progress, 2000); //$NON-NLS-1$
-                    ContainerGenerator generator = new ContainerGenerator(containerPath);
-                    generator.generateContainer(new SubProgressMonitor(monitor, 1000));
-                    createFile(newFileHandle, initialContents, new SubProgressMonitor(monitor, 1000));
-                }
-                finally
-                {
-                    monitor.done();
-                }
-            }
-        }
-        ;
+//        WorkspaceModifyOperation op = new WorkspaceModifyOperation(null)
+//        {
+//            protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException
+//            {
+//                try
+//                {
+//                    monitor.beginTask(Messages.WizardNewFileCreationPage_progress, 2000); //$NON-NLS-1$
+//                    ContainerGenerator generator = new ContainerGenerator(containerPath);
+//                    generator.generateContainer(new SubProgressMonitor(monitor, 1000));
+//                    createFile(newFileHandle, initialContents, new SubProgressMonitor(monitor, 1000));
+//                }
+//                finally
+//                {
+//                    monitor.done();
+//                }
+//            }
+//        }
+//        ;
 
-        try
-        {
-            getContainer().run(true, true, op);
-        }
-        catch (InterruptedException e)
-        {
-            return null;
-        }
-        catch (InvocationTargetException e)
-        {
-            if (e.getTargetException() instanceof CoreException)
-            {
-                ErrorDialog.openError(getContainer().getShell(), // Was Utilities.getFocusShell()
-                Messages.WizardNewFileCreationPage_errorTitle, //$NON-NLS-1$
-                null, // no special message
-                ((CoreException) e.getTargetException()).getStatus());
-            }
-            else
-            {
-                // CoreExceptions are handled above, but unexpected runtime exceptions and errors may still occur.
-                Activator.getDefault().log(
-                    NLS.bind(Messages.WizardNewFileCreationPage_error_create_file,  
-                    getClass().getName(), e.getTargetException()
-                ));//$NON-NLS-1$
-                MessageDialog
-                    .openError(
-                    getContainer().getShell(),
-                    Messages.WizardNewFileCreationPage_internalErrorTitle, NLS.bind(Messages.WizardNewFileCreationPage_internalErrorMessage,  
-                    e.getTargetException().getMessage()
-                )); //$NON-NLS-2$ //$NON-NLS-1$
-            }
-            return null;
-        }
-
-        _newFile = newFileHandle;
+//        try
+//        {
+//            getContainer().run(true, true, op);
+//        }
+//        catch (InterruptedException e)
+//        {
+//            return null;
+//        }
+//        catch (InvocationTargetException e)
+//        {
+//            if (e.getTargetException() instanceof CoreException)
+//            {
+//                ErrorDialog.openError(getContainer().getShell(), // Was Utilities.getFocusShell()
+//                Messages.WizardNewFileCreationPage_errorTitle, //$NON-NLS-1$
+//                null, // no special message
+//                ((CoreException) e.getTargetException()).getStatus());
+//            }
+//            else
+//            {
+//                // CoreExceptions are handled above, but unexpected runtime exceptions and errors may still occur.
+//                Activator.getDefault().log(
+//                    NLS.bind(Messages.WizardNewFileCreationPage_error_create_file,  
+//                    getClass().getName(), e.getTargetException()
+//                ));//$NON-NLS-1$
+//                MessageDialog
+//                    .openError(
+//                    getContainer().getShell(),
+//                    Messages.WizardNewFileCreationPage_internalErrorTitle, NLS.bind(Messages.WizardNewFileCreationPage_internalErrorMessage,  
+//                    e.getTargetException().getMessage()
+//                )); //$NON-NLS-2$ //$NON-NLS-1$
+//            }
+//            return null;
+//        }
+//
+//        _newFile = newFileHandle;
 
         return _newFile;
     }
@@ -491,7 +491,7 @@ public class WizardNewFileCreationPage extends WizardPage implements Listener
         }
         else
         {
-            _linkedResourceComposite = _linkedResourceGroup.createContents(_linkedResourceParent);
+            //_linkedResourceComposite = _linkedResourceGroup.createContents(_linkedResourceParent);
             if (_linkedResourceGroupHeight == -1)
             {
                 Point groupSize = _linkedResourceComposite.computeSize(SWT.DEFAULT, SWT.DEFAULT, true);
@@ -598,25 +598,25 @@ public class WizardNewFileCreationPage extends WizardPage implements Listener
         IPath containerPath = _resourceGroup.getContainerFullPath();
         IPath newFilePath = containerPath.append(_resourceGroup.getResource());
         IFile newFileHandle = createFileHandle(newFilePath);
-        IStatus status = _linkedResourceGroup.validateLinkLocation(newFileHandle);
-
-        if (status.getSeverity() == IStatus.ERROR)
-        {
-            if (_firstLinkCheck)
-            {
-                setMessage(status.getMessage());
-            }
-            else
-            {
-                setErrorMessage(status.getMessage());
-            }
-        }
-        else if (status.getSeverity() == IStatus.WARNING)
-        {
-            setMessage(status.getMessage(), WARNING);
-            setErrorMessage(null);
-        }
-        return status;
+//       IStatus status = _linkedResourceGroup.validateLinkLocation(newFileHandle);
+//
+//        if (status.getSeverity() == IStatus.ERROR)
+//        {
+//            if (_firstLinkCheck)
+//            {
+//                setMessage(status.getMessage());
+//            }
+//            else
+//            {
+//                setErrorMessage(status.getMessage());
+//            }
+//        }
+//        else if (status.getSeverity() == IStatus.WARNING)
+//        {
+//            setMessage(status.getMessage(), WARNING);
+//            setErrorMessage(null);
+//        }
+        return  null;//status;
     }
 
     /**

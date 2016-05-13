@@ -74,16 +74,16 @@ import org.eclipse.swt.widgets.Control;
 public class SQLStatementArea extends Composite
 {
 
-    private final static String     CURRENT_LINE         = AbstractDecoratedTextEditorPreferenceConstants.EDITOR_CURRENT_LINE;
-    private final static String     CURRENT_LINE_COLOR   = AbstractDecoratedTextEditorPreferenceConstants.EDITOR_CURRENT_LINE_COLOR;
+ //   private final static String     CURRENT_LINE         = AbstractDecoratedTextEditorPreferenceConstants.EDITOR_CURRENT_LINE;
+ //   private final static String     CURRENT_LINE_COLOR   = AbstractDecoratedTextEditorPreferenceConstants.EDITOR_CURRENT_LINE_COLOR;
     private static final int        VERTICAL_RULER_WIDTH = 12;
 
-    private SourceViewer            _viewer;
+    ///private SourceViewer            _viewer;
     private IDocument               _document;
     private ISQLSourceViewerService _service;
-    private LineNumberRulerColumn   _LineNumberRulerColumn;
+    //private LineNumberRulerColumn   _LineNumberRulerColumn;
     private boolean                 _needLineNumber;
-    private ISharedTextColors       _sharedTextColors    = null;
+    //private ISharedTextColors       _sharedTextColors    = null;
     private FontMetrics             _fontMetrics;
     private Composite               _container           = null;
     private String                  _currentDbType       = null;
@@ -150,7 +150,7 @@ public class SQLStatementArea extends Composite
             }
 
         }
-        this._viewer.refresh();
+      //  this._viewer.refresh();
     }
 
     /**
@@ -161,7 +161,7 @@ public class SQLStatementArea extends Composite
     public void setEditable(boolean editable)
     {
         checkWidget();
-        _viewer.setEditable(editable);
+        //_viewer.setEditable(editable);
     }
 
     /**
@@ -169,25 +169,25 @@ public class SQLStatementArea extends Composite
      * 
      * @param configuration the source viewer configuration to be used
      */
-    public void configureViewer(SourceViewerConfiguration configuration)
-    {
-        _viewer.configure(configuration);
-        configureViewer();
-    }
+   // public void configureViewer(SourceViewerConfiguration configuration)
+    //{
+        //_viewer.configure(configuration);
+    //    configureViewer();
+    //}
 
     private void initialize()
     {
         initializeUnits(this);
-        _sharedTextColors = Activator.getDefault().getSharedTextColors();
+      //  _sharedTextColors = Activator.getDefault().getSharedTextColors();
         GridLayout gl = new GridLayout();
         gl.marginWidth = 0;
         gl.marginHeight = 0;
         this.setLayout(gl);
         createComposite();
-        _viewer = new SourceViewer(_container, createVerticalRuler(), SWT.V_SCROLL | SWT.H_SCROLL);
+        //_viewer = new SourceViewer(_container, createVerticalRuler(), SWT.V_SCROLL | SWT.H_SCROLL);
 
         Font font = JFaceResources.getTextFont();
-        _viewer.getTextWidget().setFont(font);
+        //_viewer.getTextWidget().setFont(font);
     }
 
     private void createComposite()
@@ -205,18 +205,18 @@ public class SQLStatementArea extends Composite
         _container.setLayoutData(gridData);
     }
 
-    private void configureSourceViewerDecorationSupport(SourceViewerDecorationSupport support)
-    {
-        MarkerAnnotationPreferences _AnnotationPreferences = new MarkerAnnotationPreferences();
-
-        Iterator e = _AnnotationPreferences.getAnnotationPreferences().iterator();
-        while (e.hasNext())
-        {
-            support.setAnnotationPreference((AnnotationPreference) e.next());
-        }
-        support.setCursorLinePainterPreferenceKeys(CURRENT_LINE, CURRENT_LINE_COLOR);
-        support.setSymbolicFontName(JFaceResources.TEXT_FONT);
-    }
+//    private void configureSourceViewerDecorationSupport(SourceViewerDecorationSupport support)
+//    {
+//        MarkerAnnotationPreferences _AnnotationPreferences = new MarkerAnnotationPreferences();
+//
+//        Iterator e = _AnnotationPreferences.getAnnotationPreferences().iterator();
+//        while (e.hasNext())
+//        {
+//            support.setAnnotationPreference((AnnotationPreference) e.next());
+//        }
+//        support.setCursorLinePainterPreferenceKeys(CURRENT_LINE, CURRENT_LINE_COLOR);
+//        support.setSymbolicFontName(JFaceResources.TEXT_FONT);
+//    }
 
     /**
      * Configures the viewer internally.
@@ -227,22 +227,22 @@ public class SQLStatementArea extends Composite
      * Note: this customized SWT composite:<code>SQLStatementArea</code> is outside of the Eclipse edit framework.
      * However, we still use the same preference store which is used in Eclipse edit framework.
      */
-    private void configureViewer()
-    {
-        IAnnotationModel am = new AnnotationModel();
-        _viewer.setDocument(_document, am);
-        _viewer.showAnnotations(true);
-
-        IAnnotationAccess annotationAcc = new DefaultMarkerAnnotationAccess();
-        SourceViewerDecorationSupport svds = new SourceViewerDecorationSupport(_viewer, null, annotationAcc,
-            _sharedTextColors);
-        configureSourceViewerDecorationSupport(svds);
-        svds.install(EditorsPlugin.getDefault().getPreferenceStore());
-        Control control = _viewer.getControl();
-        GridData data = new GridData(GridData.FILL_BOTH);
-        data.heightHint = Dialog.convertHeightInCharsToPixels(_fontMetrics, 15);
-        control.setLayoutData(data);
-    }
+//    private void configureViewer()
+//    {
+//        IAnnotationModel am = new AnnotationModel();
+//        _viewer.setDocument(_document, am);
+//        _viewer.showAnnotations(true);
+//
+//        IAnnotationAccess annotationAcc = new DefaultMarkerAnnotationAccess();
+//        SourceViewerDecorationSupport svds = new SourceViewerDecorationSupport(_viewer, null, annotationAcc,
+//            _sharedTextColors);
+//        configureSourceViewerDecorationSupport(svds);
+//        svds.install(EditorsPlugin.getDefault().getPreferenceStore());
+//        Control control = _viewer.getControl();
+//        GridData data = new GridData(GridData.FILL_BOTH);
+//        data.heightHint = Dialog.convertHeightInCharsToPixels(_fontMetrics, 15);
+//        control.setLayoutData(data);
+//    }
 
     /**
      * Initializes the computation of horizontal and vertical units based on the size of current font.
@@ -260,40 +260,40 @@ public class SQLStatementArea extends Composite
         gc.dispose();
     }
 
-    private IVerticalRuler createVerticalRuler()
-    {
-        CompositeRuler ruler = new CompositeRuler();
-        ruler.addDecorator(0, new AnnotationRulerColumn(VERTICAL_RULER_WIDTH, new DefaultMarkerAnnotationAccess()));
-        if (_needLineNumber)
-        {
-            ruler.addDecorator(1, createLineNumberRulerColumn());
-        }
-        return ruler;
-    }
+//    private IVerticalRuler createVerticalRuler()
+//    {
+//        CompositeRuler ruler = new CompositeRuler();
+//        ruler.addDecorator(0, new AnnotationRulerColumn(VERTICAL_RULER_WIDTH, new DefaultMarkerAnnotationAccess()));
+//        if (_needLineNumber)
+//        {
+//            ruler.addDecorator(1, createLineNumberRulerColumn());
+//        }
+//        return ruler;
+//    }
 
-    private IVerticalRulerColumn createLineNumberRulerColumn()
-    {
-        _LineNumberRulerColumn = new LineNumberRulerColumn();
-        initializeLineNumberRulerColumn(_LineNumberRulerColumn);
-        return _LineNumberRulerColumn;
-    }
-
-    private void initializeLineNumberRulerColumn(LineNumberRulerColumn rulerColumn)
-    {
-        rulerColumn.setForeground(_sharedTextColors.getColor(new RGB(133, 133, 133)));
-        rulerColumn.setBackground(null);
-        rulerColumn.redraw();
-    }
+//    private IVerticalRulerColumn createLineNumberRulerColumn()
+//    {
+//        _LineNumberRulerColumn = new LineNumberRulerColumn();
+//        initializeLineNumberRulerColumn(_LineNumberRulerColumn);
+//        return _LineNumberRulerColumn;
+//    }
+//
+//    private void initializeLineNumberRulerColumn(LineNumberRulerColumn rulerColumn)
+//    {
+//        rulerColumn.setForeground(_sharedTextColors.getColor(new RGB(133, 133, 133)));
+//        rulerColumn.setBackground(null);
+//        rulerColumn.redraw();
+//    }
 
     /**
      * Gets the Viewer which is an instance of <code>SourceViewer</code>.
      * 
      * @return
      */
-    public SourceViewer getViewer()
-    {
-        return _viewer;
-    }
+//    public SourceViewer getViewer()
+//    {
+//        return _viewer;
+//    }
 
     /**
      * Gets the SQL Statements String which is displayed in this SQLStatementArea.

@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.TreeItem;
 /**
  * @author Zhi-hong(Bryan) Yang
  */
-public class CreateProjectAction extends NewProjectAction
+public class CreateProjectAction //extends NewProjectAction
 {
     private TreeViewer _viewer;
 
@@ -30,7 +30,7 @@ public class CreateProjectAction extends NewProjectAction
     public CreateProjectAction(TreeViewer tree)
     {
         super();
-        this.setText(Messages.ContainerSelectionGroup_createProjectAction_label);
+      //  this.setText(Messages.ContainerSelectionGroup_createProjectAction_label);
         this._viewer = tree;
         tree.getTree().setFocus();
 
@@ -50,7 +50,7 @@ public class CreateProjectAction extends NewProjectAction
         {
             ops[i] = (IProject)items[i].getData();
         }
-        super.run();
+     //   super.run();
 
         //views can implement ISetSelectionTarget but dialogs have to update and reveal resource by themselves.
         this._viewer.refresh();

@@ -21,7 +21,6 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.datatools.sqltools.result.internal.ui.export.ContainerContentProvider;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.Dialog;
@@ -49,6 +48,7 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.ui.part.DrillDownComposite;
+import org.eclipse.ui.internal.ide.misc.ContainerContentProvider;
 
 
 /**
@@ -265,7 +265,7 @@ public class ContainerSelectionGroup extends Composite
         // Create tree viewer inside drill down.
         _treeViewer = new TreeViewer(drillDown, SWT.NONE);
         drillDown.setChildTree(_treeViewer);
-        ContainerContentProvider cp = new ContainerContentProvider();
+        ContainerContentProvider cp = new ContainerContentProvider();     
         cp.showClosedProjects(_showClosedProjects);
         _treeViewer.setContentProvider(cp);
         _treeViewer.setLabelProvider(WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider());

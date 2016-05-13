@@ -29,7 +29,6 @@ import org.eclipse.datatools.sqltools.result.ui.view.ResultsViewControl;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
-import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -224,7 +223,7 @@ public abstract class MultipleTabsModeSection extends ResultSection
         && _preItem.getResultType() == item.getResultType())
         {
             Text text = null;
-            StyledText styledText = null;
+//            StyledText styledText = null;
             
             // show this tab
             tabFolder.setSelection(_preTab);
@@ -242,10 +241,10 @@ public abstract class MultipleTabsModeSection extends ResultSection
                     {
                         text = (Text) tabControl.getChildren()[0];
                     }
-                    else if (tabControl.getChildren()[0] instanceof StyledText)
-                    {
-                        styledText = (StyledText) tabControl.getChildren()[0];
-                    }
+//                    else if (tabControl.getChildren()[0] instanceof StyledText)
+//                    {
+//                        styledText = (StyledText) tabControl.getChildren()[0];
+//                    }
                 }
                 catch (Exception ex)
                 {
@@ -259,14 +258,14 @@ public abstract class MultipleTabsModeSection extends ResultSection
                 text.append((String) item.getResultObject());
                 return;
             }
-            else if (styledText != null)
-            {
-                _preItem = item;
-                StringBuffer orginalStr = new StringBuffer(styledText.getText());
-                orginalStr.append((String) item.getResultObject());
-                styledText.setText(orginalStr.toString());
-                return;
-            }
+//            else if (styledText != null)
+//            {
+//                _preItem = item;
+//                StringBuffer orginalStr = new StringBuffer(styledText.getText());
+//                orginalStr.append((String) item.getResultObject());
+//                styledText.setText(orginalStr.toString());
+//                return;
+//            }
         }
         
         /**

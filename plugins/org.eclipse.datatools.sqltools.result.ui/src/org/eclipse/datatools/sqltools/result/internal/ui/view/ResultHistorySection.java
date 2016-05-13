@@ -71,7 +71,6 @@ import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IWorkbenchActionConstants;
-import org.eclipse.ui.texteditor.IUpdate;
 
 /**
  * Table viewer that supports limit the maximum number of items
@@ -242,26 +241,26 @@ public class ResultHistorySection
                 // Do nothing
             }
         });
-        _queryExpressionText.addMouseTrackListener(new MouseTrackListener()
-        {
-
-            public void mouseEnter(MouseEvent e)
-            {
-                //Do nothing
-            }
-
-            public void mouseExit(MouseEvent e)
-            {
-                _queryExpressionText.clearSelection();
-            }
-
-            public void mouseHover(MouseEvent e)
-            {
-                //FIX BZ185443  
-//                _queryExpressionText.setFocus();
-//                _queryExpressionText.selectAll();
-            }
-        });
+//        _queryExpressionText.addMouseTrackListener(new MouseTrackListener()
+//        {
+//
+//            public void mouseEnter(MouseEvent e)
+//            {
+//                //Do nothing
+//            }
+//
+//            public void mouseExit(MouseEvent e)
+//            {
+//                _queryExpressionText.clearSelection();
+//            }
+//
+//            public void mouseHover(MouseEvent e)
+//            {
+//                //FIX BZ185443  
+////                _queryExpressionText.setFocus();
+////                _queryExpressionText.selectAll();
+//            }
+//        });
         _queryExpressionText.addModifyListener(new ModifyListener()
         {
             public void modifyText(ModifyEvent e)
@@ -626,10 +625,10 @@ public class ResultHistorySection
         for (int i = 0; i < actions.length; i++)
         {
             mgr.add(actions[i]);
-            if(actions[i] instanceof IUpdate)
-            {
-                ((IUpdate) actions[i]).update();
-            }
+        //      if(actions[i] instanceof IUpdate)
+        //    {
+        //        ((IUpdate) actions[i]).update();
+        //    }
         }
         List visibleFinishedItems = new ArrayList();
         IResultInstance[] visibleItems = getVisibleInstances();

@@ -19,9 +19,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.jface.text.TextPresentation;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyleRange;
 
 
 /**
@@ -64,7 +62,7 @@ public class HTML2TextReader extends SubstitutionTextReader
     }
 
     private int                 _fCounter            = 0;
-    private TextPresentation    _fTextPresentation;
+  //private TextPresentation    _fTextPresentation;
     private int                 _fBold               = 0;
     private int                 _fStartOffset        = -1;
     private boolean             _fInParagraph        = false;
@@ -76,10 +74,10 @@ public class HTML2TextReader extends SubstitutionTextReader
      * @param reader the reader
      * @param presentation If not <code>null</code>, formattings will be applied to the presentation.
      */
-    public HTML2TextReader(Reader reader, TextPresentation presentation)
+    public HTML2TextReader(Reader reader)//, TextPresentation presentation)
     {
         super(new PushbackReader(reader));
-        _fTextPresentation = presentation;
+      //  _fTextPresentation = presentation;
     }
 
     public int read() throws IOException
@@ -118,11 +116,11 @@ public class HTML2TextReader extends SubstitutionTextReader
         --_fBold;
         if (_fBold == 0)
         {
-            if (_fTextPresentation != null)
-            {
-                _fTextPresentation.addStyleRange(new StyleRange(_fStartOffset, _fCounter - _fStartOffset, null, null,
-                    SWT.BOLD));
-            }
+//            if (_fTextPresentation != null)
+//            {
+//                _fTextPresentation.addStyleRange(new StyleRange(_fStartOffset, _fCounter - _fStartOffset, null, null,
+//                    SWT.BOLD));
+//            }
             _fStartOffset = -1;
         }
     }

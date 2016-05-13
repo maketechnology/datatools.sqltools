@@ -172,7 +172,7 @@ public class ResultFormatWizardPage extends WizardPage
             public void widgetSelected(SelectionEvent e)
             {
                 FileDialog dialog = new FileDialog(getShell(), SWT.SAVE);
-                dialog.setFileName("result"); //$NON-NLS-1$
+         //       dialog.setFileName("result"); //$NON-NLS-1$
                 IOutputterDescriptor descriptor = OutputterRegistryReader.getInstance().getOutputterDesciptor(_isXMLResult, getOutputterIndex());
                 
                 //Set current selected file type and all files as the filter
@@ -184,8 +184,8 @@ public class ResultFormatWizardPage extends WizardPage
                 names[0] = descriptor.getExtensionFilterDisplayString();
                 names[1] = Messages.ResultFormatWizardPage_all_files;
                 
-                dialog.setFilterExtensions(exts);
-                dialog.setFilterNames(names);
+         //       dialog.setFilterExtensions(exts);
+         //       dialog.setFilterNames(names);
                 dialog.setText(Messages.ResultFormatWizardPage_dialog_text); 
                 String filename = dialog.open();
                 if (filename != null)
