@@ -32,6 +32,8 @@
         <module>../../plugins/org.eclipse.datatools.sqltools.parsers.sql.xml.query</module>
         <module>../../plugins/org.eclipse.datatools.sqltools.parsers.sql</module>
         <module>../../plugins/org.eclipse.datatools.sqltools.result</module>
+        <module>../../plugins/org.eclipse.datatools.sqltools.result.ui</module>
+        <module>../../plugins/org.eclipse.datatools.sqltools.common.ui</module>
         <!--module>../../plugins/org.eclipse.datatools.sqltools.schemaobjecteditor</module-->
         <!--module>../../plugins/org.eclipse.datatools.sqltools.schemaobjecteditor.ui</module-->
         <!--module>../../plugins/org.eclipse.datatools.sqltools.schemaobjecteditor.ui.pages</module-->

@@ -55,7 +55,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.ide.IDE;
+
 
 /**
  * An UI class that is used to save the result set or all result sets in a result instance into an Eclipse project file
@@ -195,8 +195,8 @@ public class SaveResultSetDialog extends TitleAreaDialog implements IContextProv
      */
     protected void createButtonsForButtonBar(Composite parent)
     {
-        _okButton = createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
-        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+        _okButton = createButton(parent, IDialogConstants.OK_ID, IDialogConstants.get().OK_LABEL, true);
+        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.get().CANCEL_LABEL, false);
     }
     
     /*
@@ -308,7 +308,7 @@ public class SaveResultSetDialog extends TitleAreaDialog implements IContextProv
         {
             String[] buttons = new String[]
             {
-                IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL, IDialogConstants.CANCEL_LABEL
+                IDialogConstants.get().YES_LABEL, IDialogConstants.get().NO_LABEL, IDialogConstants.get().CANCEL_LABEL
             };
             String question = NLS.bind(Messages.SaveResultSetDialog_overwrite, new Object[] 
 			{
@@ -371,7 +371,7 @@ public class SaveResultSetDialog extends TitleAreaDialog implements IContextProv
                         file.setCharset(_resourceGroup.getEncoding(), new NullProgressMonitor());
                         
                         IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-                        IDE.openEditor(page, file, true);
+                       // IDE.openEditor(page, file, true);
                     }
 
                 }

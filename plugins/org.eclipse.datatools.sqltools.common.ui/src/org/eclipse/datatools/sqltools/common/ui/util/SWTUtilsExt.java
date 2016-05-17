@@ -7,7 +7,6 @@ package org.eclipse.datatools.sqltools.common.ui.util;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
-import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -83,7 +82,7 @@ public class SWTUtilsExt
         {
             label.setForeground(toolkit.getColors().getColor(FormColors.TITLE));
         }
-        toolkit.paintBordersFor(parent);
+ //       toolkit.paintBordersFor(parent);
         return label;
     }
     
@@ -117,7 +116,7 @@ public class SWTUtilsExt
             return new Button(parent, style);
         }
         Button button  = toolkit.createButton(parent, "", style);
-        toolkit.paintBordersFor(parent);
+ //       toolkit.paintBordersFor(parent);
         return button; //$NON-NLS-1$
     }
 
@@ -193,7 +192,7 @@ public class SWTUtilsExt
         else
         {
             Text text = toolkit .createText(parent, value, style);
-            toolkit.paintBordersFor(parent);
+   //         toolkit.paintBordersFor(parent);
             return text;
         }
     }
@@ -215,7 +214,7 @@ public class SWTUtilsExt
         else
         {
             Composite comp = toolkit.createComposite(parent, style);
-            toolkit.paintBordersFor(parent);
+  //          toolkit.paintBordersFor(parent);
             return comp;
         }
        
@@ -263,7 +262,7 @@ public class SWTUtilsExt
         }        
         Combo combo = new Combo(parent, style);
         toolkit.adapt(combo, true,true);
-        toolkit.paintBordersFor(parent);
+ //       toolkit.paintBordersFor(parent);
         return combo;
     }
     
@@ -297,7 +296,7 @@ public class SWTUtilsExt
         final Spinner spinner = new Spinner(parent, style);
         toolkit.adapt(spinner, true,true);
         spinner.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-        toolkit.paintBordersFor(parent);
+  //      toolkit.paintBordersFor(parent);
         return spinner;
     }
     
@@ -309,10 +308,10 @@ public class SWTUtilsExt
      * @param form Managed form
      * @return StyledText
      */
-    public static StyledText createStyledText(Composite parent, int style, IManagedForm form)
-    {
-        return createStyledText(parent, style, form == null? null:form.getToolkit());
-    }
+//    public static StyledText createStyledText(Composite parent, int style, IManagedForm form)
+//    {
+//        return createStyledText(parent, style, form == null? null:form.getToolkit());
+//    }
     
     /**
      * Create Styled text by creation wizard or  toolkit
@@ -322,17 +321,17 @@ public class SWTUtilsExt
      * @param toolkit Tool kit
      * @return StyledText
      */
-    public static StyledText createStyledText(Composite parent, int style, FormToolkit toolkit)
-    {
-        if (toolkit == null)
-        {
-            return new StyledText(parent, style);
-        }
-        StyledText spinner = new StyledText(parent, style);
-        toolkit.adapt(spinner, true, true);
-        toolkit.paintBordersFor(parent);
-        return spinner;
-    }
+//    public static StyledText createStyledText(Composite parent, int style, FormToolkit toolkit)
+//    {
+//        if (toolkit == null)
+//        {
+//            return new StyledText(parent, style);
+//        }
+//        StyledText spinner = new StyledText(parent, style);
+//        toolkit.adapt(spinner, true, true);
+//        toolkit.paintBordersFor(parent);
+//        return spinner;
+//    }
     
     /**
      * Create StyledText by parent or Managed form
@@ -363,7 +362,7 @@ public class SWTUtilsExt
             return new Table(parent, style);
         }
         Table table = toolkit.createTable(parent, style);
-        toolkit.paintBordersFor(parent);
+     //   toolkit.paintBordersFor(parent);
         return table;
     }
     
@@ -396,7 +395,7 @@ public class SWTUtilsExt
         }
         CCombo cCombo = new CCombo(parent, style | SWT.FLAT);
         toolkit.adapt(cCombo, true, true);
-        toolkit.paintBordersFor(parent);
+   //     toolkit.paintBordersFor(parent);
         return cCombo;
     }
 }

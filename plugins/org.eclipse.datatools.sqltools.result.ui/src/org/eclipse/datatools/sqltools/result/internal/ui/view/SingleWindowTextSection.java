@@ -32,7 +32,6 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.ST;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
@@ -64,7 +63,7 @@ public class SingleWindowTextSection extends SingleWindowModeSection
      */
     protected void createViewerForResultInstance(IResultInstance instance)
     {
-        _textViewer.getViewer().getTextWidget().dispose();
+      //  _textViewer.getViewer().getTextWidget().dispose();
 
         //add actions to the context menu of text widget
         ArrayList actions = new ArrayList();
@@ -87,11 +86,11 @@ public class SingleWindowTextSection extends SingleWindowModeSection
         
         _textViewer = new TextResultViewer(_composite, SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL, actions);
         GridData gd = new GridData(GridData.FILL_BOTH);
-        _textViewer.getViewer().getTextWidget().setLayoutData(gd);
-        _textViewer.getViewer().getTextWidget().setEditable(true);
-        _textViewer.getViewer().getTextWidget().setEnabled(true);
-        _textViewer.getViewer().setDocument(createDocumentForResultInstance(instance));
-        
+//        _textViewer.getViewer().getTextWidget().setLayoutData(gd);
+//        _textViewer.getViewer().getTextWidget().setEditable(true);
+//        _textViewer.getViewer().getTextWidget().setEnabled(true);
+//        _textViewer.getViewer().setDocument(createDocumentForResultInstance(instance));
+//        
         onInstanceFinished();
         _composite.layout(true);
     }
@@ -232,17 +231,17 @@ public class SingleWindowTextSection extends SingleWindowModeSection
     protected void outputToViewer(List outputList)
     {
     	StringBuffer sb = new StringBuffer();
-    	sb.append(_textViewer.getViewer().getTextWidget().getText());
+  //  	sb.append(_textViewer.getViewer().getTextWidget().getText());
     	for (Iterator iterator = outputList.iterator(); iterator.hasNext();) {
 			String message = (String) iterator.next();
 			sb.append(message);
 		}
     	
-    	_textViewer.getViewer().getTextWidget().setVisible(false);
-        _textViewer.getViewer().getTextWidget().setText(sb.toString());
-        _textViewer.getViewer().getTextWidget().invokeAction(ST.TEXT_END);
-        _textViewer.getViewer().getTextWidget().setVisible(true);
-        
+//    	_textViewer.getViewer().getTextWidget().setVisible(false);
+//        _textViewer.getViewer().getTextWidget().setText(sb.toString());
+//        _textViewer.getViewer().getTextWidget().invokeAction(ST.TEXT_END);
+//        _textViewer.getViewer().getTextWidget().setVisible(true);
+//        
         //should reset the undo manager when writting result in the text widget
         _textViewer.resetUndoMgr();
     }
@@ -254,13 +253,13 @@ public class SingleWindowTextSection extends SingleWindowModeSection
         _textViewer = new TextResultViewer(_composite, SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL, null);
 
         GridData gd = new GridData(GridData.FILL_BOTH);
-        _textViewer.getViewer().getTextWidget().setLayoutData(gd);
-        _textViewer.getViewer().setDocument(new Document("")); //$NON-NLS-1$
+//        _textViewer.getViewer().getTextWidget().setLayoutData(gd);
+//        _textViewer.getViewer().setDocument(new Document("")); //$NON-NLS-1$
 
         
         //set the result widget to be enabled when it is initialized
-        _textViewer.getViewer().getTextWidget().setEditable(false);
-        _textViewer.getViewer().getTextWidget().setEnabled(false);
+//        _textViewer.getViewer().getTextWidget().setEditable(false);
+//        _textViewer.getViewer().getTextWidget().setEnabled(false);
     }
 
     public void onInstanceFinished()
@@ -271,7 +270,7 @@ public class SingleWindowTextSection extends SingleWindowModeSection
         {
             // append the last sub ResultIntance's display string to _textViewer
             StringBuffer sb = new StringBuffer(""); //$NON-NLS-1$
-            sb.append(_textViewer.getViewer().getTextWidget().getText());
+      //      sb.append(_textViewer.getViewer().getTextWidget().getText());
             int indexOfLastSubResult = _resultInstance.getSubResults().size() - 1;
             IResultInstance lastSubInstance = (IResultInstance) _resultInstance.getSubResults()
                     .get(indexOfLastSubResult);
@@ -284,10 +283,10 @@ public class SingleWindowTextSection extends SingleWindowModeSection
                 				_resultsViewControl.getUsePreferences())));
             }
 
-            _textViewer.getViewer().getTextWidget().setVisible(false);
-            _textViewer.getViewer().getTextWidget().setText(sb.toString());
-            _textViewer.getViewer().getTextWidget().invokeAction(ST.TEXT_END);
-            _textViewer.getViewer().getTextWidget().setVisible(true);
+//            _textViewer.getViewer().getTextWidget().setVisible(false);
+//            _textViewer.getViewer().getTextWidget().setText(sb.toString());
+//            _textViewer.getViewer().getTextWidget().invokeAction(ST.TEXT_END);
+//            _textViewer.getViewer().getTextWidget().setVisible(true);
 
             // should reset the undo manager when writting result in the text widget
             _textViewer.resetUndoMgr();
@@ -309,7 +308,7 @@ public class SingleWindowTextSection extends SingleWindowModeSection
 
     public void onInstanceReseted()
     {
-        _textViewer.getViewer().getTextWidget().setText(""); //$NON-NLS-1$
+     //   _textViewer.getViewer().getTextWidget().setText(""); //$NON-NLS-1$
     }
 
     public TextResultViewer getTextViewer()

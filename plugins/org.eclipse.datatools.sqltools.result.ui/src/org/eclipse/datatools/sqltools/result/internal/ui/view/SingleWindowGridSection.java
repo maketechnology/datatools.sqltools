@@ -109,7 +109,7 @@ public class SingleWindowGridSection extends SingleWindowModeSection
         super.createInitialControl(composite);
         // create a scrolled composite in _composite
         _scrolledComp = new ScrolledComposite(_composite, SWT.V_SCROLL | SWT.H_SCROLL);
-        _scrolledComp.getVerticalBar().setIncrement(17);
+     //   _scrolledComp.getVerticalBar().setIncrement(17);
         _scrolledComp.setLayout(new FillLayout());
         _scrolledComp.setExpandHorizontal(true);
         _scrolledComp.setExpandVertical(true);

@@ -67,45 +67,45 @@ public class ResultsViewUIPlugin extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		
-		// Set the ResultConfiguration values to what is stored in the preferences.
-		ResultConfiguration resultConfig = ResultConfiguration.getInstance();
-		IPreferenceStore prefStore = getPreferenceStore();
-		resultConfig.setMaxRowCount(prefStore.getInt(PreferenceConstants.SQL_RESULTS_VIEW_MAX_ROW_COUNT));
-		resultConfig.setMaxDisplayRowCount(prefStore.getInt(PreferenceConstants.SQL_RESULTS_VIEW_MAX_DISPLAY_ROW_COUNT));
-		resultConfig.setAutoSave(prefStore.getBoolean(PreferenceConstants.RESULT_HISTORY_SAVE_HISTORY));
-		resultConfig.setAutoClean(prefStore.getBoolean(PreferenceConstants.RESULT_HISTORY_CLEAN_HISTORY));
-		resultConfig.setShowLabel(prefStore.getBoolean(PreferenceConstants.SQL_RESULT_VIEW_SHOW_LABELS));
-		
-        getPreferenceStore().addPropertyChangeListener(
-        		new IPropertyChangeListener()
-        		{
-					public void propertyChange(PropertyChangeEvent event) 
-					{
-						String name = event.getProperty();
-						Object newValue = event.getNewValue();
-						if(name.equals(ResultsConstants.SQL_RESULTS_VIEW_MAX_ROW_COUNT))
-						{
-						    ResultConfiguration.getInstance().setMaxRowCount(((Integer)newValue).intValue());
-						}
-						if(name.equals(ResultsConstants.SQL_RESULTS_VIEW_MAX_DISPLAY_ROW_COUNT))
-						{
-						    ResultConfiguration.getInstance().setMaxDisplayRowCount(((Integer)newValue).intValue());
-						}
-						if(name.equals(PreferenceConstants.RESULT_HISTORY_SAVE_HISTORY))
-						{
-						    ResultConfiguration.getInstance().setAutoSave(((Boolean)newValue).booleanValue());
-						}
-						if(name.equals(PreferenceConstants.RESULT_HISTORY_CLEAN_HISTORY))
-                        {
-						    ResultConfiguration.getInstance().setAutoClean(((Boolean)newValue).booleanValue());
-                        }
-						if(name.equals(PreferenceConstants.SQL_RESULT_VIEW_SHOW_LABELS))
-                        {
-						    ResultConfiguration.getInstance().setShowLabel(((Boolean)newValue).booleanValue());
-                        }
-					}
-        			
-        		});
+//		// Set the ResultConfiguration values to what is stored in the preferences.
+//		ResultConfiguration resultConfig = ResultConfiguration.getInstance();
+//		IPreferenceStore prefStore = getPreferenceStore();
+//		resultConfig.setMaxRowCount(prefStore.getInt(PreferenceConstants.SQL_RESULTS_VIEW_MAX_ROW_COUNT));
+//		resultConfig.setMaxDisplayRowCount(prefStore.getInt(PreferenceConstants.SQL_RESULTS_VIEW_MAX_DISPLAY_ROW_COUNT));
+//		resultConfig.setAutoSave(prefStore.getBoolean(PreferenceConstants.RESULT_HISTORY_SAVE_HISTORY));
+//		resultConfig.setAutoClean(prefStore.getBoolean(PreferenceConstants.RESULT_HISTORY_CLEAN_HISTORY));
+//		resultConfig.setShowLabel(prefStore.getBoolean(PreferenceConstants.SQL_RESULT_VIEW_SHOW_LABELS));
+//		
+//        getPreferenceStore().addPropertyChangeListener(
+//        		new IPropertyChangeListener()
+//        		{
+//					public void propertyChange(PropertyChangeEvent event) 
+//					{
+//						String name = event.getProperty();
+//						Object newValue = event.getNewValue();
+//						if(name.equals(ResultsConstants.SQL_RESULTS_VIEW_MAX_ROW_COUNT))
+//						{
+//						    ResultConfiguration.getInstance().setMaxRowCount(((Integer)newValue).intValue());
+//						}
+//						if(name.equals(ResultsConstants.SQL_RESULTS_VIEW_MAX_DISPLAY_ROW_COUNT))
+//						{
+//						    ResultConfiguration.getInstance().setMaxDisplayRowCount(((Integer)newValue).intValue());
+//						}
+//						if(name.equals(PreferenceConstants.RESULT_HISTORY_SAVE_HISTORY))
+//						{
+//						    ResultConfiguration.getInstance().setAutoSave(((Boolean)newValue).booleanValue());
+//						}
+//						if(name.equals(PreferenceConstants.RESULT_HISTORY_CLEAN_HISTORY))
+//                        {
+//						    ResultConfiguration.getInstance().setAutoClean(((Boolean)newValue).booleanValue());
+//                        }
+//						if(name.equals(PreferenceConstants.SQL_RESULT_VIEW_SHOW_LABELS))
+//                        {
+//						    ResultConfiguration.getInstance().setShowLabel(((Boolean)newValue).booleanValue());
+//                        }
+//					}
+//        			
+//        		});
 	
 	}
 
