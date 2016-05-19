@@ -24,10 +24,8 @@ import org.eclipse.datatools.sqltools.result.ui.view.ResultsViewControl;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
-import org.eclipse.jface.text.IFindReplaceTarget;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.IKeyBindingService;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
@@ -87,7 +85,7 @@ public class ResultsView extends ViewPart
         menuBar.appendToGroup(ORIENTATION_GROUP, _resultsViewControl.getVLayoutAction());
         menuBar.appendToGroup(ORIENTATION_GROUP, _resultsViewControl.getHLayoutAction());
     
-    	IKeyBindingService keyBinding = getViewSite().getKeyBindingService();
+  //  	IKeyBindingService keyBinding = getViewSite().getKeyBindingService();
     	IActionBars actionBars = getViewSite().getActionBars();
     	
         actionBars.setGlobalActionHandler("org.eclipse.datatools.sqltools.result.terminate", _resultsViewControl.getTerminateAction());        
@@ -96,9 +94,9 @@ public class ResultsView extends ViewPart
         
         actionBars.setGlobalActionHandler("org.eclipse.datatools.sqltools.result.removeAllInstances", _resultsViewControl.getRemoveAllVisibleFinishedResultAction());
 	        
-        keyBinding.registerAction(_resultsViewControl.getRemoveResultAction());
-        keyBinding.registerAction(_resultsViewControl.getRemoveAllVisibleFinishedResultAction());
-        keyBinding.registerAction(_resultsViewControl.getTerminateAction());
+//        keyBinding.registerAction(_resultsViewControl.getRemoveResultAction());
+//        keyBinding.registerAction(_resultsViewControl.getRemoveAllVisibleFinishedResultAction());
+//        keyBinding.registerAction(_resultsViewControl.getTerminateAction());
         actionBars.updateActionBars();
         
         _resultsViewControl.getResultHistorySection().getResultTable().addFilter(new ConnectionProfileFilter(ResultsViewUIPlugin.getDefault().getPreferenceStore()));
@@ -199,26 +197,26 @@ public class ResultsView extends ViewPart
 
     public Object getAdapter(Class adapter)
     {
-        if (IFindReplaceTarget.class.equals(adapter))
-        {
-            IFindReplaceTarget target = null;
-            TextResultViewer viewer = null;
-            if (_resultsViewControl != null){
-	            if (_resultsViewControl.getResultSection() instanceof MultipleTabsTextSection)
-	            {
-	                viewer = ((MultipleTabsTextSection) _resultsViewControl.getResultSection()).getTextViewer();
-	            }
-	            if (_resultsViewControl.getResultSection() instanceof SingleWindowTextSection)
-	            {
-	                viewer = ((SingleWindowTextSection) _resultsViewControl.getResultSection()).getTextViewer();
-	            }
-	            if (viewer != null)
-	            {
-	                target = viewer.getViewer().getFindReplaceTarget();
-	            }
-            }
-            return target;
-        }
+//        if (IFindReplaceTarget.class.equals(adapter))
+//        {
+//            IFindReplaceTarget target = null;
+//            TextResultViewer viewer = null;
+//            if (_resultsViewControl != null){
+//	            if (_resultsViewControl.getResultSection() instanceof MultipleTabsTextSection)
+//	            {
+//	                viewer = ((MultipleTabsTextSection) _resultsViewControl.getResultSection()).getTextViewer();
+//	            }
+//	            if (_resultsViewControl.getResultSection() instanceof SingleWindowTextSection)
+//	            {
+//	                viewer = ((SingleWindowTextSection) _resultsViewControl.getResultSection()).getTextViewer();
+//	            }
+//	            if (viewer != null)
+//	            {
+//	                target = viewer.getViewer().getFindReplaceTarget();
+//	            }
+//            }
+//            return target;
+//        }
         
         return super.getAdapter(adapter);
     }

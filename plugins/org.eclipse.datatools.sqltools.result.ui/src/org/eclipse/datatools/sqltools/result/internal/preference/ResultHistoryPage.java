@@ -85,7 +85,7 @@ public class ResultHistoryPage extends PreferencePage implements IWorkbenchPrefe
         public Control createContents(Composite parent)
         {
             Control control = super.createContents(parent);
-            _leftList.addPaintListener(paintListener);
+         //   _leftList.addPaintListener(paintListener);
             setInput(_initVisibleColumns, _initInvisibleColumns, true);
             return control;
         }

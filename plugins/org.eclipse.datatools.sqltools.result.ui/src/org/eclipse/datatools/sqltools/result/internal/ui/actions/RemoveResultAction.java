@@ -14,7 +14,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
-import org.eclipse.ui.texteditor.IUpdate;
 
 /**
  * This action is for remove the current selected result instance. It will only be enabled when the result instance is
@@ -22,7 +21,7 @@ import org.eclipse.ui.texteditor.IUpdate;
  * 
  * @author Dafan Yang
  */
-public class RemoveResultAction extends BaseSelectionListenerAction implements IUpdate
+public class RemoveResultAction extends BaseSelectionListenerAction //implements IUpdate
 {
     ISelectionProvider _provider;
 

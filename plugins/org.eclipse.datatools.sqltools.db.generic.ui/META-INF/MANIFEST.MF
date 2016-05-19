@@ -5,13 +5,15 @@ Bundle-SymbolicName: org.eclipse.datatools.sqltools.db.generic.ui;singleton:=tru
 Bundle-Version: 1.1.0.qualifier
 Bundle-Activator: org.eclipse.datatools.sqltools.db.generic.ui.GenericUIActivator
 Bundle-Localization: plugin
-Require-Bundle: org.eclipse.ui,
+Require-Bundle: org.eclipse.ui;resolution:=optional,
  org.eclipse.core.runtime,
- org.eclipse.datatools.sqltools.editor.core.ui,
- org.eclipse.datatools.sqltools.sqleditor,
+ org.eclipse.datatools.sqltools.editor.core.ui;resolution:=optional,
+ org.eclipse.datatools.sqltools.sqleditor;resolution:=optional,
  org.eclipse.datatools.sqltools.sql.ui,
  org.eclipse.datatools.sqltools.sql,
- org.eclipse.datatools.sqltools.db.generic
+ org.eclipse.datatools.sqltools.db.generic,
+ org.eclipse.rap.ui.workbench,
+ org.eclipse.rap.jface
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.datatools.sqltools.db.generic.ui,

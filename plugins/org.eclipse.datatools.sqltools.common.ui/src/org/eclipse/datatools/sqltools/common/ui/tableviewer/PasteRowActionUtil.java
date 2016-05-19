@@ -5,6 +5,7 @@
  */
 package org.eclipse.datatools.sqltools.common.ui.tableviewer;
 
+
 import java.util.Vector;
 
 import org.eclipse.datatools.sqltools.common.core.tableviewer.IRowData;

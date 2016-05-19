@@ -40,12 +40,11 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.texteditor.IUpdate;
 
 /**
  * @author Dafan Yang
  */
-public class SaveResultInstanceAction extends Action implements IUpdate
+public class SaveResultInstanceAction extends Action //implements IUpdate
 {
     private static ILogger _log = ResultsViewUIPlugin.getLogger(null);
     Shell                  _shell;
@@ -120,7 +119,7 @@ public class SaveResultInstanceAction extends Action implements IUpdate
             {
                 String[] buttons = new String[]
                 {
-                    IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL, IDialogConstants.CANCEL_LABEL
+                    IDialogConstants.get().YES_LABEL, IDialogConstants.get().NO_LABEL, IDialogConstants.get().CANCEL_LABEL
                 };
                 String question = NLS.bind(Messages.ResultExportWizard_overwrite, new Object[] 
 				{

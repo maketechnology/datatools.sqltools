@@ -115,7 +115,7 @@ public class ResultExportWizard extends Wizard implements IContextProvider
         {
             String[] buttons = new String[]
             {
-                IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL, IDialogConstants.CANCEL_LABEL
+                IDialogConstants.get().YES_LABEL, IDialogConstants.get().NO_LABEL, IDialogConstants.get().CANCEL_LABEL
             }
             ;
 
