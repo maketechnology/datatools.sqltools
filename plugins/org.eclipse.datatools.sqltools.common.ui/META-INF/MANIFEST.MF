@@ -11,7 +11,6 @@ Require-Bundle: org.eclipse.ui;resolution:=optional,
  org.eclipse.core.runtime,
  org.eclipse.jface.text;resolution:=optional,
  org.eclipse.text;bundle-version="3.5.400",
- org.eclipse.debug.core,
  org.eclipse.datatools.modelbase.sql,
  org.eclipse.datatools.connectivity,
  org.eclipse.datatools.connectivity.ui,
@@ -21,7 +20,7 @@ Require-Bundle: org.eclipse.ui;resolution:=optional,
  org.eclipse.datatools.help,
  org.eclipse.ui.forms;resolution:=optional,
  org.eclipse.rap.ui.forms;bundle-version="3.0.2";resolution:=optional,
- org.eclipse.rap.ui.forms.source;bundle-version="3.0.2"
+ org.eclipse.ui.ide;bundle-version="0.0.1"
 Import-Package: com.ibm.icu.text,
  com.ibm.icu.util
 Export-Package: org.eclipse.datatools.sqltools.common.core.tableviewer,

@@ -413,15 +413,19 @@ public class TableCursor extends Canvas
                     {
                         index = 0;
                     }
-                    int leadKey = (getStyle() & SWT.RIGHT_TO_LEFT) != 0 ? SWT.ARROW_RIGHT : SWT.ARROW_LEFT;
-                    if (event.keyCode == leadKey)
-                    {
-                        setRowColumn(rowIndex, order[Math.max(0, index - 1)], true);
-                    }
-                    else
-                    {
-                        setRowColumn(rowIndex, order[Math.min(columnCount - 1, index + 1)], true);
-                    }
+                    int leadKey;
+					//if ((getStyle() & SWT.RIGHT_TO_LEFT) != 0)
+					//	leadKey = SWT.ARROW_RIGHT;
+					//else
+					//	leadKey = SWT.ARROW_LEFT;
+                    //if (event.keyCode == leadKey)
+                    //{
+                    //    setRowColumn(rowIndex, order[Math.max(0, index - 1)], true);
+                    //}
+                    //else
+                    //{
+                    //    setRowColumn(rowIndex, order[Math.min(columnCount - 1, index + 1)], true);
+                    //}
                     break;
                 }
             case SWT.HOME:
@@ -606,8 +610,8 @@ public class TableCursor extends Canvas
     {
         switch (event.detail)
         {
-            case SWT.TRAVERSE_ARROW_NEXT:
-            case SWT.TRAVERSE_ARROW_PREVIOUS:
+    //        case SWT.TRAVERSE_ARROW_NEXT:
+      //      case SWT.TRAVERSE_ARROW_PREVIOUS:
             case SWT.TRAVERSE_RETURN:
                 event.doit = false;
                 return;

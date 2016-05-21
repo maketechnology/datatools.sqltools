@@ -41,7 +41,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.ide.IDE;
 
 /**
  * A standard "Save As" dialog which solicits a path from the user. The <code>getResult</code> method returns the
@@ -54,6 +53,7 @@ import org.eclipse.ui.ide.IDE;
  * @see org.eclipse.ui.dialogs.ContainerGenerator
  * @author Hui Cao
  */
+@SuppressWarnings("serial")
 public class SaveAsDialog extends TitleAreaDialog
 {
     private IFile                     _originalFile  = null;
@@ -320,8 +320,9 @@ public class SaveAsDialog extends TitleAreaDialog
 
                         if(_openMode)
                         {
-                            IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-                            _editor = IDE.openEditor(page, file, true);
+                            @SuppressWarnings("unused")
+							IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+                    //        _editor = IDE.openEditor(page, file, true);
                         }
                     }
                 }

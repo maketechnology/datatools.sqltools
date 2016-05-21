@@ -19,14 +19,13 @@ import org.eclipse.datatools.sqltools.result.ui.ResultsViewUIPlugin;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.texteditor.IUpdate;
 
 /**
  * Switch the display mode between text and grid
  * 
  * @author Dafan Yang
  */
-public class TextModeDisplayAction extends Action implements IUpdate
+public class TextModeDisplayAction extends Action// implements IUpdate
 {
     public TextModeDisplayAction()
     {

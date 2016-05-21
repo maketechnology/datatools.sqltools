@@ -11,8 +11,8 @@
  *******************************************************************************/
 package org.eclipse.datatools.sqltools.common.ui.preferences;
 
-import org.eclipse.debug.core.ILaunchConfiguration;
-import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+//import org.eclipse.debug.core.ILaunchConfiguration;
+//import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.jface.preference.IPreferenceStore;
 
 /**
@@ -30,14 +30,14 @@ public interface IDataServerLaunchPreferenceSection extends IDataServerPreferenc
      * 
      * @param configuration
      */
-    public abstract void launchConfigurationInitialize(ILaunchConfiguration configuration, IPreferenceStore store);
+//    public abstract void launchConfigurationInitialize(ILaunchConfiguration configuration, IPreferenceStore store);
 
     /**
      * save the UI section's status to launch configuration
      * 
      * @param wc
      */
-    public abstract void saveConfiguration(ILaunchConfigurationWorkingCopy wc);
+//    public abstract void saveConfiguration(ILaunchConfigurationWorkingCopy wc);
 
     /**
      * @param mode indicates whether this component is used for launch configuration or preference page. Implementing

@@ -195,8 +195,8 @@ public class SaveResultSetDialog extends TitleAreaDialog implements IContextProv
      */
     protected void createButtonsForButtonBar(Composite parent)
     {
-        _okButton = createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
-        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+        _okButton = createButton(parent, IDialogConstants.OK_ID, IDialogConstants.get().OK_LABEL, true);
+        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.get().CANCEL_LABEL, false);
     }
     
     /*
@@ -308,7 +308,7 @@ public class SaveResultSetDialog extends TitleAreaDialog implements IContextProv
         {
             String[] buttons = new String[]
             {
-                IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL, IDialogConstants.CANCEL_LABEL
+                IDialogConstants.get().YES_LABEL, IDialogConstants.get().NO_LABEL, IDialogConstants.get().CANCEL_LABEL
             };
             String question = NLS.bind(Messages.SaveResultSetDialog_overwrite, new Object[] 
 			{

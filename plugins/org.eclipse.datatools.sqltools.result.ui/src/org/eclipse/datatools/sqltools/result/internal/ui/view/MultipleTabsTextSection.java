@@ -186,7 +186,7 @@ public class MultipleTabsTextSection extends MultipleTabsModeSection
         _textViewer = new TextResultViewer(composite, SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL, items);
 
         GridData gd = new GridData(GridData.FILL_BOTH);
-        _textViewer.getViewer().getTextWidget().setLayoutData(gd);
+     //   _textViewer.getViewer().getTextWidget().setLayoutData(gd);
 
         // if current item is result set, we should display row count, displayed row count message for user
         if (item.getResultType() == ResultItem.RESULT_SET)
@@ -219,7 +219,7 @@ public class MultipleTabsTextSection extends MultipleTabsModeSection
         }
         IDocument document = new Document();
         document.set(ColumnAlignedResultItem.getResultItemDisplayString(item, _nullValue, _showHeadings, false));
-        _textViewer.getViewer().setDocument(document);
+    //    _textViewer.getViewer().setDocument(document);
         
         _viewerMap.put(_tabFolder.getSelection(), _textViewer);
     }
@@ -257,14 +257,14 @@ public class MultipleTabsTextSection extends MultipleTabsModeSection
             _paramTabNumber = _numberStaticTab - 1;
             _paramsViewer = new TextResultViewer(_tabFolder, SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL, null);
             GridData gd = new GridData(GridData.FILL_BOTH);
-            _paramsViewer.getViewer().getTextWidget().setLayoutData(gd);
-            _paramsItem.setControl(_paramsViewer.getViewer().getControl());
+       //     _paramsViewer.getViewer().getTextWidget().setLayoutData(gd);
+      //     _paramsItem.setControl(_paramsViewer.getViewer().getControl());
             
             _viewerMap.put(_paramsItem, _paramsViewer);
         }
         // will overwrite the orginal parameters
-        _paramsViewer.getViewer().setDocument(
-                new Document(ColumnAlignedResultItem.getParametersDsipalyStr(params, _nullValue)));
+        //_paramsViewer.getViewer().setDocument(
+         //       new Document(ColumnAlignedResultItem.getParametersDsipalyStr(params, _nullValue)));
         ;
     }
 
