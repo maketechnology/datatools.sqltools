@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.ui;resolution:=optional,
  org.eclipse.ui.ide;resolution:=optional,
  org.eclipse.rap.ui;bundle-version="3.0.2";resolution:=optional,
  org.eclipse.text;bundle-version="3.5.400",
- org.eclipse.rap.filedialog,
+ org.eclipse.rap.filedialog;resolution:=optional,
  org.eclipse.rap.rwt,
  org.eclipse.rap.draw2d.compatibility;resolution:=optional
 Import-Package: com.ibm.icu.text;version="3.6.1",

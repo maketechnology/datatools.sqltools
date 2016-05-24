@@ -1,22 +1,21 @@
 /*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * Copyright (c) 2001, 2004 IBM Corporation and others. All rights reserved. This program and the
+ * accompanying materials are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
+ *
+ * Contributors: IBM Corporation - initial API and implementation
  *******************************************************************************/
 package org.eclipse.datatools.sqltools.data.internal.ui.editor;
 
+import org.eclipse.datatools.sqltools.common.ui.tableviewer.TableCursor;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ICellEditorListener;
 import org.eclipse.jface.viewers.ICellModifier;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.TableCursor;
+// import org.eclipse.swt.custom.TableCursor;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.MouseEvent;
@@ -29,15 +28,15 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
 public class TableDataTableCursor extends TableCursor {
-    
+
 	protected TableViewer tableViewer;
-	
+
 	public TableDataTableCursor(TableViewer tableViewer) {
 		super(tableViewer.getTable(), SWT.NONE);
 		this.tableViewer = tableViewer;
 		setBackground(Display.getDefault().getSystemColor(SWT.COLOR_LIST_SELECTION));
 		setForeground(Display.getDefault().getSystemColor(SWT.COLOR_LIST_SELECTION_TEXT));
-		
+
 		registerCellEditorsListener();
 		registerKeyListener();
 		registerMouseListener();
@@ -48,21 +47,21 @@ public class TableDataTableCursor extends TableCursor {
 		addTraverseListener(new TraverseListener() {
             public void keyTraversed(TraverseEvent e) {
                 handleTraverse(e);
-                
+
             }
-		});     
+        });
     }
-	
+
     protected void registerMouseListener() {
 		addMouseListener(new MouseListener() {
-            public void mouseDoubleClick(MouseEvent e) {
-            }
+            public void mouseDoubleClick(MouseEvent e) {}
+
             public void mouseDown(MouseEvent e) {
-                if (e.button==1)
+                if (e.button == 1)
                     edit();
             }
-            public void mouseUp(MouseEvent e) {
-            }
+
+            public void mouseUp(MouseEvent e) {}
 		});
     }
 
@@ -70,12 +69,10 @@ public class TableDataTableCursor extends TableCursor {
 		addKeyListener(new KeyListener() {
 			public void keyPressed(KeyEvent e) {
 				if(e.character!='\0' && e.character!=SWT.CR && e.character!=SWT.LF &&
-				        e.character!=SWT.BS && e.character!=SWT.DEL && e.character!=SWT.TAB &&
-				        e.character!=SWT.ESC
-				    && (e.stateMask==0 || e.stateMask==SWT.SHIFT)){
-					
+                                e.character != SWT.BS && e.character != SWT.DEL && e.character != SWT.TAB && e.character != SWT.ESC && (e.stateMask == 0 || e.stateMask == SWT.SHIFT)) {
+
 					edit();
-					
+
 					CellEditor editor = tableViewer.getCellEditors()[getColumn()];
 					if (editor instanceof TextCellEditor) {
 						editor.setValue(String.valueOf(e.character));
@@ -86,7 +83,7 @@ public class TableDataTableCursor extends TableCursor {
 			}
 			public void keyReleased(KeyEvent e) {
 			}
-		});	
+        });
     }
 
 
@@ -95,80 +92,81 @@ public class TableDataTableCursor extends TableCursor {
 	{
 		ICellEditorListener editorListener = new ICellEditorListener() {
             public void applyEditorValue() {
-        		setVisible(true);
-        		redraw();
+                setVisible(true);
+                redraw();
             }
+
             public void cancelEditor() {
                 setVisible(true);
             }
-            public void editorValueChanged(boolean oldValidState, boolean newValidState) { 
-            }
+
+            public void editorValueChanged(boolean oldValidState, boolean newValidState) {}
 		};
-		
-		
+
+
 		CellEditor editors[] = tableViewer.getCellEditors();
 		for (int i=0; i<editors.length; ++i)
-		    if (editors[i]!=null)
-		        editors[i].addListener(editorListener);
+            if (editors[i] != null)
+                editors[i].addListener(editorListener);
 	}
-	
+
 	public void edit() {
-	    TableItem row = getRow();
-	    if (row != null) {
-	        Object obj = row.getData();
-	        ICellModifier cellModifier = tableViewer.getCellModifier();
-	        if (cellModifier instanceof TableDataCellModifier) {
-	            TableDataCellModifier tableCellModifier = (TableDataCellModifier) cellModifier;
-	            tableCellModifier.setCanModify(true);
-	            tableViewer.editElement(obj, getColumn());
-	            tableCellModifier.setCanModify(false);
-	        }
-	    }
+        TableItem row = getRow();
+        if (row != null) {
+            Object obj = row.getData();
+            ICellModifier cellModifier = tableViewer.getCellModifier();
+            if (cellModifier instanceof TableDataCellModifier) {
+                TableDataCellModifier tableCellModifier = (TableDataCellModifier) cellModifier;
+                tableCellModifier.setCanModify(true);
+                tableViewer.editElement(obj, getColumn());
+                tableCellModifier.setCanModify(false);
+            }
+        }
 	}
-	
+
 	protected void handleTraverse(TraverseEvent event)
 	{
-	    int row = (getRow()==null) ? 0 : tableViewer.getTable().indexOf(getRow());
+        int row = (getRow() == null) ? 0 : tableViewer.getTable().indexOf(getRow());
 		int col = getColumn();
-		
+
 		switch (event.detail) {
-		case SWT.TRAVERSE_TAB_PREVIOUS:		    
-		    if (col!=0)
-		        col--;
-		    else { 
-		        if (row!=0 ) {
-			        col=tableViewer.getTable().getColumnCount()-1;
-			        row--;
-		        } else {
-		            return;
-		        }
-		    }
-		    setSelection(row, col);
-		    notifyListeners(SWT.Selection, new Event());
+            case SWT.TRAVERSE_TAB_PREVIOUS:
+                if (col != 0)
+                    col--;
+                else {
+                    if (row != 0) {
+                        col = tableViewer.getTable().getColumnCount() - 1;
+                        row--;
+                    } else {
+                        return;
+                    }
+                }
+                setSelection(row, col);
+                notifyListeners(SWT.Selection, new Event());
 			event.doit = false;
 			return;
 		case SWT.TRAVERSE_TAB_NEXT:
-		    if (col!=tableViewer.getTable().getColumnCount()-1)
-		        col++;
-		    else {
-		        if (row!=tableViewer.getTable().getItemCount()-1) {				            
-		            col=0;
-		            row++;
-		        } else {
-		            return;
-		        }
-		    }
-		    setSelection(row, col);
-		    notifyListeners(SWT.Selection, new Event());
-		    event.doit = false;
-		    return;
+                if (col != tableViewer.getTable().getColumnCount() - 1)
+                    col++;
+                else {
+                    if (row != tableViewer.getTable().getItemCount() - 1) {
+                        col = 0;
+                        row++;
+                    } else {
+                        return;
+                    }
+                }
+                setSelection(row, col);
+                notifyListeners(SWT.Selection, new Event());
+                event.doit = false;
+                return;
 		case SWT.TRAVERSE_RETURN:
 			edit();
 			event.doit = false;
 			return;
 		}
-		
-		    
+
+
 	}
 
 }
