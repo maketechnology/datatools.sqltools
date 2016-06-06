@@ -20,19 +20,17 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.datatools.sqltools.sql.parser.ast.Node;
 import org.eclipse.swt.graphics.Image;
 
-public class SQLImageService 
+public class SQLImageService
 {
-	
+
 	public static final SQLImageService INSTANCE = new SQLImageService();
-	
+
 	private Map _nodeImageHandlerMap = new HashMap();
-	
+
 	private SQLImageService() {
 
 		IExtensionRegistry pluginRegistry = Platform.getExtensionRegistry();
@@ -50,24 +48,25 @@ public class SQLImageService
 					try {
 						handler = (INodesImageHandler) configElements[j]
 								.createExecutableExtension("imageHandler"); //$NON-NLS-1$
-						
+
 						_nodeImageHandlerMap.put(nodeClazz, handler);
 					} catch (CoreException e) {
-						IStatus status = new Status(
-								IStatus.ERROR,
-								SQLUIActivator.getDefault().getBundle()
-										.getSymbolicName(),
-								IStatus.ERROR,
-								"The error was detected when creating the sql node image handler for " + nodeClazz , //$NON-NLS-1$
-								e);
-						SQLUIActivator.getDefault().getLog().log(status);
+                        // IStatus status = new Status(
+                        // IStatus.ERROR,
+                        // SQLUIActivator.getDefault().getBundle()
+                        // .getSymbolicName(),
+                        // IStatus.ERROR,
+                        // "The error was detected when creating the sql node image handler for " +
+                        // nodeClazz , //$NON-NLS-1$
+                        // e);
+                        // SQLUIActivator.getDefault().getLog().log(status);
 						continue;
 					}
 				}
 			}
 		}
 	}
-	
+
 	public INodesImageHandler getImageHandler(Node node)
 	{
 		INodesImageHandler handler = null;
@@ -82,9 +81,9 @@ public class SQLImageService
 			}
 			nodeClazz = nodeClazz.getSuperclass();
 		}
-		return handler; 
+        return handler;
 	}
-	
+
 	public Image getNodeImage(Node node)
 	{
 		INodesImageHandler handler = getImageHandler(node);

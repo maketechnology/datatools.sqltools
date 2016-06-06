@@ -12,6 +12,7 @@ import java.util.Map;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.rap.*;
 
 /**
  * Manages SWT color objects. Until the <code>dispose</code> method is called, 

@@ -55,7 +55,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.ide.IDE;
+
 
 /**
  * An UI class that is used to save the result set or all result sets in a result instance into an Eclipse project file
@@ -371,7 +371,7 @@ public class SaveResultSetDialog extends TitleAreaDialog implements IContextProv
                         file.setCharset(_resourceGroup.getEncoding(), new NullProgressMonitor());
                         
                         IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-                        IDE.openEditor(page, file, true);
+                       // IDE.openEditor(page, file, true);
                     }
 
                 }

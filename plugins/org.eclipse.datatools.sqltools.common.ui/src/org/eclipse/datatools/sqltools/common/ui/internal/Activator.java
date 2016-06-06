@@ -148,7 +148,11 @@ public class Activator extends AbstractUIPlugin
      * @param <ISharedTextColors>
      * @return
      */
+<<<<<<< HEAD
     public SharedTextColors getSharedTextColors()
+=======
+    public <ISharedTextColors> ISharedTextColors getSharedTextColors()
+>>>>>>> refs/heads/feature_US073
     {
         if(_sharedColors ==null)
         {
