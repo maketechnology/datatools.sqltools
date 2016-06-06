@@ -52,9 +52,6 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-//import org.eclipse.ui.actions.WorkspaceModifyOperation;
-//import org.eclipse.ui.dialogs.ContainerGenerator;
-//import org.eclipse.ui.internal.ide.dialogs.CreateLinkedResourceGroup;
 
 /**
  * 

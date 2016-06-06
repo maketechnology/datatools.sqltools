@@ -7,15 +7,18 @@ Bundle-Vendor: %providerName
 Bundle-Activator: org.eclipse.datatools.sqltools.internal.tabledataeditor.TableDataEditorPlugin
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.ui,
- org.eclipse.ui.navigator,
+ org.eclipse.ui;resolution:=optional,
+ org.eclipse.ui.navigator;resolution:=optional,
  org.eclipse.datatools.modelbase.sql,
  org.eclipse.datatools.modelbase.dbdefinition,
  org.eclipse.datatools.sqltools.result,
  org.eclipse.datatools.connectivity.sqm.core,
  org.eclipse.datatools.connectivity.sqm.core.ui,
  org.eclipse.datatools.connectivity,
- org.eclipse.datatools.sqltools.result.ui
+ org.eclipse.datatools.sqltools.result.ui,
+ org.eclipse.rap.ui.navigator,
+ org.eclipse.rap.jface,
+ org.eclipse.rap.ui.workbench
 Import-Package: com.ibm.icu.text;version="3.6.1",
  com.ibm.icu.util;version="3.6.1"
 Export-Package: org.eclipse.datatools.sqltools.internal.tabledataeditor,

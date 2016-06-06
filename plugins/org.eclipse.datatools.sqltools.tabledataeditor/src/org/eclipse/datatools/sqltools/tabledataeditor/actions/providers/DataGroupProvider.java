@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
@@ -15,14 +15,15 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.ui.navigator.CommonActionProvider;
 
+
 public class DataGroupProvider extends CommonActionProvider
 {
-    public static final String DATA_MENU_ID = "org.eclipse.datatools.connectivity.sqm.server.ui.data"; //$NON-NLS-1$
-    private static final String DATA_MENU = ResourceLoader.INSTANCE.queryString("DATATOOLS.SERVER.UI.EXPLORER.DATA");//$NON-NLS-1$ 
-    private static final String EDIT_GROUP = "group.edit"; //$NON-NLS-1$
+	public static final String DATA_MENU_ID = "org.eclipse.datatools.connectivity.sqm.server.ui.data"; //$NON-NLS-1$
+	private static final String DATA_MENU = ResourceLoader.INSTANCE.queryString("DATATOOLS.SERVER.UI.EXPLORER.DATA");//$NON-NLS-1$
+	private static final String EDIT_GROUP = "group.edit"; //$NON-NLS-1$
 
-    public void fillContextMenu(IMenuManager menu)
-    {
-        menu.appendToGroup(EDIT_GROUP, new MenuManager(DATA_MENU, DATA_MENU_ID));
-    }
+	public void fillContextMenu(IMenuManager menu)
+	{
+		menu.appendToGroup(EDIT_GROUP, new MenuManager(DATA_MENU, DATA_MENU_ID));
+	}
 }

@@ -281,7 +281,7 @@ public class ContainerSelectionGroup extends Composite
         treeViewer.setInput(ResourcesPlugin.getWorkspace());
         
         MenuManager mgr = new MenuManager();
-        mgr.add(new CreateProjectAction(treeViewer));
+       // mgr.add(new CreateProjectAction(treeViewer));
         CreateFolderAction createFolderAction = new CreateFolderAction(treeViewer);
         treeViewer.addSelectionChangedListener(createFolderAction);
         mgr.add(createFolderAction);
