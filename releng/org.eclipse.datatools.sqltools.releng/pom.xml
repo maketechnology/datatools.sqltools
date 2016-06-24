@@ -15,11 +15,11 @@
     </parent>
 
     <modules>
-        <module>../../plugins/org.eclipse.ui.ide</module>
         <module>../../plugins/org.eclipse.datatools.sqltools.data.core</module>
         <!--module>../../plugins/org.eclipse.datatools.sqltools.data.ui</module-->
         <!--module>../../plugins/org.eclipse.datatools.sqltools.tabledataeditor</module-->
-        <module>../../plugins/org.eclipse.datatools.sqltools.common.ui</module>
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.result.ui</module-->
+        <!--module>../../plugins/org.eclipse.datatools.sqltools.common.ui</module-->
         <module>../../plugins/org.eclipse.datatools.sqltools.sql</module>
         <!--module>../../plugins/org.eclipse.datatools.sqltools.plan</module-->
         <!--module>../../plugins/org.eclipse.datatools.sqltools.editor.core</module-->
@@ -33,6 +33,7 @@
         <module>../../plugins/org.eclipse.datatools.sqltools.parsers.sql</module>
         <module>../../plugins/org.eclipse.datatools.sqltools.result</module>
         <module>../../plugins/org.eclipse.datatools.sqltools.result.ui</module>
+        <module>../../plugins/org.eclipse.datatools.sqltools.common.ui</module>
         <!--module>../../plugins/org.eclipse.datatools.sqltools.schemaobjecteditor</module-->
         <!--module>../../plugins/org.eclipse.datatools.sqltools.schemaobjecteditor.ui</module-->
         <!--module>../../plugins/org.eclipse.datatools.sqltools.schemaobjecteditor.ui.pages</module-->

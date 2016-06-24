@@ -83,6 +83,7 @@ public class AccessibleTableViewer extends StructuredViewer
     private Color                _backgroundColor = null;
 
     private Color                _foregroundColor = null;
+    
 
     /**
      * Context menu group for cut/copy/paste related actions. Value: <code>"group.copy"</code>

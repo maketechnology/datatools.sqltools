@@ -33,13 +33,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.QualifiedName;
-import org.eclipse.core.runtime.SafeRunner;
 import org.eclipse.core.runtime.content.IContentDescription;
 import org.eclipse.core.runtime.content.IContentType;
 import org.eclipse.core.runtime.content.IContentTypeMatcher;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
-import org.eclipse.jface.util.SafeRunnable;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
@@ -50,20 +48,15 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IEditorRegistry;
-//import org.eclipse.ui.IMarkerHelpRegistry;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartReference;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.MultiPartInitException;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 //import org.eclipse.ui.internal.ide.EditorAssociationOverrideDescriptor;
 import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
-//import org.eclipse.ui.internal.ide.model.StandardPropertiesAdapterFactory;
-//import org.eclipse.ui.internal.ide.model.WorkbenchAdapterFactory;
-//import org.eclipse.ui.internal.ide.registry.MarkerHelpRegistry;
-//import org.eclipse.ui.internal.ide.registry.MarkerHelpRegistryReader;
+import org.eclipse.ui.internal.ide.model.WorkbenchAdapterFactory;
 import org.eclipse.ui.internal.misc.UIStats;
 import org.eclipse.ui.part.FileEditorInput;
 
@@ -1119,27 +1112,23 @@ public final class IDE {
     /**
      * Opens an editor on the given IFileStore object.
      * <p>
-     * Unlike the other <code>openEditor</code> methods, this one
-     * can be used to open files that reside outside the workspace
-     * resource set.
+     * Unlike the other <code>openEditor</code> methods, this one can be used to open files that
+     * reside outside the workspace resource set.
      * </p>
      * <p>
-     * If the page already has an editor open on the target object then that
-     * editor is brought to front; otherwise, a new editor is opened.
+     * If the page already has an editor open on the target object then that editor is brought to
+     * front; otherwise, a new editor is opened.
      * </p>
      *
-     * @param page
-     *            the page in which the editor will be opened
-     * @param fileStore
-     *            the IFileStore representing the file to open
+     * @param page the page in which the editor will be opened
+     * @param fileStore the IFileStore representing the file to open
      * @return an open editor or <code>null</code> if an external editor was opened
-     * @exception PartInitException
-     *                if the editor could not be initialized
+     * @exception PartInitException if the editor could not be initialized
      * @see org.eclipse.ui.IWorkbenchPage#openEditor(IEditorInput, String)
      * @since 3.3
      */
 	public static IEditorPart openEditorOnFileStore(IWorkbenchPage page, IFileStore fileStore) throws PartInitException {
-        //sanity checks
+        // sanity checks
         if (page == null) {
 			throw new IllegalArgumentException();
 		}
@@ -1571,25 +1560,25 @@ public final class IDE {
 	 *
 	 * @since 3.5
 	 */
-//	public static void registerAdapters() {
-//        IAdapterManager manager = Platform.getAdapterManager();
-//        IAdapterFactory factory = new WorkbenchAdapterFactory();
-//        manager.registerAdapters(factory, IWorkspace.class);
-//        manager.registerAdapters(factory, IWorkspaceRoot.class);
-//        manager.registerAdapters(factory, IProject.class);
-//        manager.registerAdapters(factory, IFolder.class);
-//        manager.registerAdapters(factory, IFile.class);
-//        manager.registerAdapters(factory, IMarker.class);
-//
-//        // properties adapters
-//        IAdapterFactory paFactory = new StandardPropertiesAdapterFactory();
-//        manager.registerAdapters(paFactory, IWorkspace.class);
-//        manager.registerAdapters(paFactory, IWorkspaceRoot.class);
-//        manager.registerAdapters(paFactory, IProject.class);
-//        manager.registerAdapters(paFactory, IFolder.class);
-//        manager.registerAdapters(paFactory, IFile.class);
-//        manager.registerAdapters(paFactory, IMarker.class);
-//	}
+    public static void registerAdapters() {
+        IAdapterManager manager = Platform.getAdapterManager();
+        IAdapterFactory factory = new WorkbenchAdapterFactory();
+        manager.registerAdapters(factory, IWorkspace.class);
+        manager.registerAdapters(factory, IWorkspaceRoot.class);
+        manager.registerAdapters(factory, IProject.class);
+        manager.registerAdapters(factory, IFolder.class);
+        manager.registerAdapters(factory, IFile.class);
+        manager.registerAdapters(factory, IMarker.class);
+
+        // properties adapters
+        // IAdapterFactory paFactory = new StandardPropertiesAdapterFactory();
+        // manager.registerAdapters(paFactory, IWorkspace.class);
+        // manager.registerAdapters(paFactory, IWorkspaceRoot.class);
+        // manager.registerAdapters(paFactory, IProject.class);
+        // manager.registerAdapters(paFactory, IFolder.class);
+        // manager.registerAdapters(paFactory, IFile.class);
+        // manager.registerAdapters(paFactory, IMarker.class);
+    }
 
 	private static boolean isIgnoredStatus(IStatus status,
 			String[] ignoreModelProviderIds) {

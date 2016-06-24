@@ -28,7 +28,6 @@ import org.eclipse.datatools.sqltools.plan.internal.ui.actions.RemoveAllPlansAct
 import org.eclipse.datatools.sqltools.plan.internal.ui.actions.RemovePlanAction;
 import org.eclipse.datatools.sqltools.plan.internal.ui.actions.SavePlanAction;
 import org.eclipse.datatools.sqltools.plan.internal.util.Images;
-import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IAction;
@@ -55,55 +54,53 @@ import org.eclipse.ui.part.ViewPart;
 
 /**
  * The SQL Execution Plan view
- * 
+ *
  * @author Hui Cao
  */
 public class PlanView extends ViewPart
 {
     // Group definitions
-    public static final String     GROUP_NAVIGATE    = "group.navigate";                      //$NON-NLS-1$
-    public static final String     GROUP_REMOVE      = "group.remove";                        //$NON-NLS-1$
-    public static final String     GROUP_IO          = "group.io";                            //$NON-NLS-1$
-    public static final String     GROUP_HISTORY     = "group.history";                       //$NON-NLS-1$
-    public static final String     GROUP_MODE        = "group.mode";                          //$NON-NLS-1$
-    
-    private Text                   _textPlan;
-    private PageBook               _fPagebook;
-    private Label                  _fNoPlanShownLabel;
-    private Label                  _fWorkingLabel;
-    private GraphicsPlanControl    _graphicsControl;
-    private IPlanInstance          _currentPlan;
-    private PlanDropDownAction     _plansDropDownAction;
-    private RemovePlanAction       _removePlanAction;
-    private RemoveAllPlansAction   _removeAllPlansAction;
-    private SavePlanAction         _savePlanAction;
-    private LoadPlanAction         _loadPlanAction;
-    private PlanTypeDropDownAction _planModeDropDownAction;
-    private Action                 _preferenceAction;
-    private static final String    _LINE_BREAK       = System.getProperty("line.separator");
-    private VerticalLayoutAction   _vLayoutAction;
-    private HorizontalLayoutAction _hLayoutAction;
-    private static final String    ORIENTATION_GROUP = "orientation";
+    public static final String GROUP_NAVIGATE = "group.navigate"; //$NON-NLS-1$
+    public static final String GROUP_REMOVE = "group.remove"; //$NON-NLS-1$
+    public static final String GROUP_IO = "group.io"; //$NON-NLS-1$
+    public static final String GROUP_HISTORY = "group.history"; //$NON-NLS-1$
+    public static final String GROUP_MODE = "group.mode"; //$NON-NLS-1$
 
-    private static final String    FONT_STYLE        = "Courier New";
-    private static final int       FONT_SIZE         = 10;
-    
+    private Text _textPlan;
+    private PageBook _fPagebook;
+    private Label _fNoPlanShownLabel;
+    private Label _fWorkingLabel;
+    private GraphicsPlanControl _graphicsControl;
+    private IPlanInstance _currentPlan;
+    private PlanDropDownAction _plansDropDownAction;
+    private RemovePlanAction _removePlanAction;
+    private RemoveAllPlansAction _removeAllPlansAction;
+    private SavePlanAction _savePlanAction;
+    private LoadPlanAction _loadPlanAction;
+    private PlanTypeDropDownAction _planModeDropDownAction;
+    private Action _preferenceAction;
+    private static final String _LINE_BREAK = System.getProperty("line.separator");
+    private VerticalLayoutAction _vLayoutAction;
+    private HorizontalLayoutAction _hLayoutAction;
+    private static final String ORIENTATION_GROUP = "orientation";
+
+    private static final String FONT_STYLE = "Courier New";
+    private static final int FONT_SIZE = 10;
+
     /**
-     * 
+     *
      */
-    public PlanView()
-    {
+    public PlanView() {
         super();
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
      */
-    public void createPartControl(Composite parent)
-    {
-    	PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, HelpUtil.getContextId(IHelpConstants.PLAN_VIEW, PlanViewPlugin.getDefault().getBundle().getSymbolicName()));
+    public void createPartControl(Composite parent) {
+        PlatformUI.getWorkbench().getHelpSystem().setHelp(parent, HelpUtil.getContextId(IHelpConstants.PLAN_VIEW, PlanViewPlugin.getDefault().getBundle().getSymbolicName()));
         _fPagebook = new PageBook(parent, SWT.NONE);
 
         // Page 1 of page book (no plan label)
@@ -117,21 +114,18 @@ public class PlanView extends ViewPart
         // Page 3 of page book (text Control )
         _textPlan = new Text(_fPagebook, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
         _textPlan.setEditable(false);
-        _textPlan.setBackground(ColorConstants.white());
+        // _textPlan.setBackground(ColorConstants.white());
         FontData fd = new FontData(FONT_STYLE, FONT_SIZE, SWT.NORMAL);
         final Font font = new Font(_textPlan.getDisplay(), fd);
         _textPlan.setFont(font);
-        _textPlan.addDisposeListener(new DisposeListener()
-        {
-            public void widgetDisposed(DisposeEvent e)
-            {
-                if ( font != null && !font.isDisposed() )
-                {
+        _textPlan.addDisposeListener(new DisposeListener() {
+            public void widgetDisposed(DisposeEvent e) {
+                if (font != null && !font.isDisposed()) {
                     font.dispose();
                 }
             }
         });
-        
+
         // Page 4 of page book (graphics Control )
         _graphicsControl = new GraphicsPlanControl(_fPagebook, SWT.NONE);
 
@@ -149,8 +143,7 @@ public class PlanView extends ViewPart
         PlanViewPlugin.getPlanManager().addPlanManagerListener(_listener);
     }
 
-    public static void createStandardGroups(IContributionManager menu)
-    {
+    public static void createStandardGroups(IContributionManager menu) {
         menu.add(new Separator(GROUP_NAVIGATE));
         menu.add(new GroupMarker(GROUP_REMOVE));
         menu.add(new Separator(GROUP_IO));
@@ -159,8 +152,7 @@ public class PlanView extends ViewPart
         menu.add(new Separator(GROUP_MODE));
     }
 
-    private void initializeToolBar()
-    {
+    private void initializeToolBar() {
         IToolBarManager tbm = getViewSite().getActionBars().getToolBarManager();
         createStandardGroups(tbm);
         tbm.appendToGroup(GROUP_REMOVE, _removePlanAction);
@@ -171,12 +163,8 @@ public class PlanView extends ViewPart
         tbm.appendToGroup(GROUP_MODE, _planModeDropDownAction);
         _preferenceAction = new Action(Messages.getString("PlanView.preference")) //$NON-NLS-1$
         {
-            public void run()
-            {
-                String[] preferencePages =
-                {
-                    PreferenceConstants.PLAN_PREFERENCE_PAGE_ID
-                };
+            public void run() {
+                String[] preferencePages = {PreferenceConstants.PLAN_PREFERENCE_PAGE_ID};
                 PreferencesUtil.createPreferenceDialogOn(null, preferencePages[0], preferencePages, null).open();
             }
         };
@@ -184,12 +172,11 @@ public class PlanView extends ViewPart
         _hLayoutAction = new HorizontalLayoutAction(_graphicsControl.getSash());
 
         configPlanLayout();
-        
+
         getViewSite().getActionBars().updateActionBars();
     }
 
-    private void createActions()
-    {
+    private void createActions() {
         _removePlanAction = new RemovePlanAction(this);
         _removeAllPlansAction = new RemoveAllPlansAction();
         _plansDropDownAction = new PlanDropDownAction(this);
@@ -199,8 +186,7 @@ public class PlanView extends ViewPart
         updateActions();
     }
 
-    private void updateActions()
-    {
+    private void updateActions() {
         _removePlanAction.update();
         _removeAllPlansAction.update();
         _plansDropDownAction.update();
@@ -210,95 +196,78 @@ public class PlanView extends ViewPart
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.ui.part.WorkbenchPart#dispose()
      */
-    public void dispose()
-    {
+    public void dispose() {
         super.dispose();
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
      */
-    public void setFocus()
-    {
+    public void setFocus() {
         // Do nothing
     }
 
     /**
      * Returns the current plan shown
-     * 
+     *
      * @return the current plan shown
      */
-    public IPlanInstance getCurrentPlan()
-    {
+    public IPlanInstance getCurrentPlan() {
         return _currentPlan;
     }
 
     /**
      * Get the plan layout according to preference store, and configure the layout immediately.
      */
-    private void configPlanLayout()
-    {
-        if (PlanViewPlugin.getDefault().getPreferenceStore().getBoolean(PreferenceConstants.VERTICAL_LAYOUT_PLAN_VIEW))
-        {
+    private void configPlanLayout() {
+        if (PlanViewPlugin.getDefault().getPreferenceStore().getBoolean(PreferenceConstants.VERTICAL_LAYOUT_PLAN_VIEW)) {
             _vLayoutAction.setChecked(true);
             _hLayoutAction.setChecked(false);
             _vLayoutAction.run();
-        }
-        else
-        {
+        } else {
             _hLayoutAction.setChecked(true);
             _vLayoutAction.setChecked(false);
             _hLayoutAction.run();
         }
     }
-    
+
     /**
      * Shows the given execution plan
-     * 
+     *
      * @param instance an execution plan instance
      */
-    public void showPlan(final IPlanInstance instance)
-    {
-        if (_fPagebook.isDisposed())
-        {
+    public void showPlan(final IPlanInstance instance) {
+        if (_fPagebook.isDisposed()) {
             return;
         }
 
         _currentPlan = instance;
-        _fPagebook.getDisplay().syncExec(new Runnable()
-        {
-            public void run()
-            {
+        _fPagebook.getDisplay().syncExec(new Runnable() {
+            public void run() {
                 // when getting the plan, refresh plan layout according to preference store.
                 configPlanLayout();
-                
+
                 Control control = _textPlan;
                 String label = "";
-                if (instance == null)
-                {
+                if (instance == null) {
                     control = _fNoPlanShownLabel;
                 }
 
-                if (instance != null)
-                {
-                    if (!instance.isFinished())
-                    {
+                if (instance != null) {
+                    if (!instance.isFinished()) {
                         control = _fWorkingLabel;
-                    }
-                    else
-                    {
+                    } else {
                         String rawPlan;
-                        if (instance.getStatus() == IPlanInstance.SUCCESS)
-                        {
+                        if (instance.getStatus() == IPlanInstance.SUCCESS) {
                             rawPlan = instance.getRawPlan();
                             int planType = instance.getPlanRequest().getPlanType();
-                        	IPlanService service = PlanServiceRegistry.getInstance().getPlanService(instance.getPlanRequest().getDatabaseDefinitionId());
-                        	boolean isGraphicPlan = service.getPlanOption().isGraphicPlan(planType);
+                            IPlanService service = PlanServiceRegistry.getInstance().getPlanService(instance.getPlanRequest().getDatabaseDefinitionId());
+                            boolean isGraphicPlan = service.getPlanOption().isGraphicPlan(planType);
 
                             if (isGraphicPlan) {
 								if (rawPlan == null || rawPlan.trim().equals("")) {
@@ -318,9 +287,7 @@ public class PlanView extends ViewPart
 												.getString("PlanView.sql") + "\n" + instance.getPlanRequest().getSql() + "\n" //$NON-NLS-1$
 												+ rawPlan);
 							}
-                        }
-                        else if (instance.getStatus() == IPlanInstance.FAILED)
-                        {
+                        } else if (instance.getStatus() == IPlanInstance.FAILED) {
                             String errorMsg = instance.getFailThrowable().getMessage();
                             _textPlan.setText(errorMsg);
                             control = _textPlan;
@@ -343,91 +310,83 @@ public class PlanView extends ViewPart
 
     /**
      * Checks if graphic plan is supported by the given database
-     * 
+     *
      * @param instance a plan instance
      * @return <code>false</code> if graphic plan is not supported for the given database
      */
-    public boolean isGraphicPlanSupported(IPlanInstance instance)
-    {
-        IPlanService planService = PlanServiceRegistry.getInstance().getPlanService(
-                instance.getPlanRequest().getDatabaseDefinitionId());
-        if (planService == null)
-        {
-            Exception noExtensionFound = new Exception(Messages.getString("ExecutionPlansDrawer.no.extension", instance
-                    .getPlanRequest().getDatabaseDefinitionId(), instance.getPlanRequest().getDatabaseDefinitionId(),
-                    PlanConstants.PLUGIN_ID, PlanConstants.PLAN_SERVICE_EXTENSION_POINT));
+    public boolean isGraphicPlanSupported(IPlanInstance instance) {
+        IPlanService planService = PlanServiceRegistry.getInstance().getPlanService(instance.getPlanRequest().getDatabaseDefinitionId());
+        if (planService == null) {
+            Exception noExtensionFound = new Exception(Messages.getString("ExecutionPlansDrawer.no.extension", instance.getPlanRequest().getDatabaseDefinitionId(), instance.getPlanRequest().getDatabaseDefinitionId(), PlanConstants.PLUGIN_ID, PlanConstants.PLAN_SERVICE_EXTENSION_POINT));
             instance.finishFail(noExtensionFound);
             return false;
         }
         IPlanDrawer drawer = planService.getPlanDrawer();
-        if (drawer == null)
-        {
-            Exception noDrawerFound = new Exception(Messages.getString("ExecutionPlansDrawer.no.drawer", instance
-                    .getPlanRequest().getDatabaseDefinitionId()));
+        if (drawer == null) {
+            Exception noDrawerFound = new Exception(Messages.getString("ExecutionPlansDrawer.no.drawer", instance.getPlanRequest().getDatabaseDefinitionId()));
             instance.finishFail(noDrawerFound);
             return false;
         }
         IPlanParser parser = planService.getPlanParser();
-        if (parser == null)
-        {
-            Exception noParserFound = new Exception(Messages.getString("ExecutionPlansDrawer.no.parser", instance
-                    .getPlanRequest().getDatabaseDefinitionId()));
+        if (parser == null) {
+            Exception noParserFound = new Exception(Messages.getString("ExecutionPlansDrawer.no.parser", instance.getPlanRequest().getDatabaseDefinitionId()));
             instance.finishFail(noParserFound);
             return false;
         }
         return true;
     }
-    
-    IPlanManagerListener _listener = new IPlanManagerListener()
-                                   {
-                                       /*
-                                         * (non-Javadoc)
-                                         * 
-                                         * @see org.eclipse.datatools.sqltools.plan.internal.IPlanManagerListener#planInstanceCreated(org.eclipse.datatools.sqltools.plan.internal.IPlanInstance)
-                                         */
-                                       public void planInstanceCreated(final IPlanInstance plan)
-                                       {
-                                           showPlan(plan);
-                                       }
 
-                                       /*
-                                         * (non-Javadoc)
-                                         * 
-                                         * @see org.eclipse.datatools.sqltools.plan.internal.IPlanManagerListener#planInstanceRemoved(org.eclipse.datatools.sqltools.plan.internal.IPlanInstance)
-                                         */
-                                       public void planInstanceRemoved(IPlanInstance plan)
-                                       {
-                                           // _plansDropDownAction.disposeMenu();
-                                           if (_currentPlan == plan)
-                                           {
-                                               showPlan(null);
-                                           }
+    IPlanManagerListener _listener = new IPlanManagerListener() {
+        /*
+         * (non-Javadoc)
+         *
+         * @see
+         * org.eclipse.datatools.sqltools.plan.internal.IPlanManagerListener#planInstanceCreated(org
+         * .eclipse.datatools.sqltools.plan.internal.IPlanInstance)
+         */
+        public void planInstanceCreated(final IPlanInstance plan) {
+            showPlan(plan);
+        }
 
-                                       }
+        /*
+         * (non-Javadoc)
+         *
+         * @see
+         * org.eclipse.datatools.sqltools.plan.internal.IPlanManagerListener#planInstanceRemoved(org
+         * .eclipse.datatools.sqltools.plan.internal.IPlanInstance)
+         */
+        public void planInstanceRemoved(IPlanInstance plan) {
+            // _plansDropDownAction.disposeMenu();
+            if (_currentPlan == plan) {
+                showPlan(null);
+            }
 
-                                       /*
-                                         * (non-Javadoc)
-                                         * 
-                                         * @see org.eclipse.datatools.sqltools.plan.internal.IPlanManagerListener#planInstancesRemoved()
-                                         */
-                                       public void planInstancesRemoved()
-                                       {
-                                           _plansDropDownAction.disposeMenu();
-                                           showPlan(null);
-                                       }
+        }
 
-                                       /*
-                                        * (non-Javadoc)
-                                        * @see org.eclipse.datatools.sqltools.plan.internal.IPlanManagerListener#planInstanceFinished(org.eclipse.datatools.sqltools.plan.internal.IPlanInstance)
-                                        */
-                                       public void planInstanceFinished(final IPlanInstance instance)
-                                       {
-                                           if (_currentPlan == instance)
-                                           {
-                                               showPlan(instance);
-                                           }
-                                       }
-                                   };
+        /*
+         * (non-Javadoc)
+         *
+         * @see
+         * org.eclipse.datatools.sqltools.plan.internal.IPlanManagerListener#planInstancesRemoved()
+         */
+        public void planInstancesRemoved() {
+            _plansDropDownAction.disposeMenu();
+            showPlan(null);
+        }
+
+        /*
+         * (non-Javadoc)
+         * 
+         * @see
+         * org.eclipse.datatools.sqltools.plan.internal.IPlanManagerListener#planInstanceFinished(
+         * org.eclipse.datatools.sqltools.plan.internal.IPlanInstance)
+         */
+        public void planInstanceFinished(final IPlanInstance instance) {
+            if (_currentPlan == instance) {
+                showPlan(instance);
+            }
+        }
+    };
 
 }
 
@@ -436,21 +395,18 @@ class VerticalLayoutAction extends Action
     SashForm _sash;
 
     /**
-     * 
+     *
      */
-    public VerticalLayoutAction(SashForm sash)
-    {
+    public VerticalLayoutAction(SashForm sash) {
         super(Messages.getString("PlanView.vertical.orientation"), IAction.AS_RADIO_BUTTON); //$NON-NLS-1$
         _sash = sash;
     }
 
-    public void run()
-    {
+    public void run() {
         _sash.setOrientation(SWT.VERTICAL);
     }
 
-    public ImageDescriptor getImageDescriptor()
-    {
+    public ImageDescriptor getImageDescriptor() {
         return Images.DESC_VERTICAL_PLAN_VIEW;
     }
 }
@@ -460,21 +416,18 @@ class HorizontalLayoutAction extends Action
     SashForm _sash;
 
     /**
-     *  
+     *
      */
-    public HorizontalLayoutAction(SashForm sash)
-    {
+    public HorizontalLayoutAction(SashForm sash) {
         super(Messages.getString("PlanView.horizontal.orientation"), IAction.AS_RADIO_BUTTON); //$NON-NLS-1$
         _sash = sash;
     }
 
-    public void run()
-    {
+    public void run() {
         _sash.setOrientation(SWT.HORIZONTAL);
     }
 
-    public ImageDescriptor getImageDescriptor()
-    {
+    public ImageDescriptor getImageDescriptor() {
         return Images.DESC_HORIZONTAL_PLAN_VIEW;
     }
 }
