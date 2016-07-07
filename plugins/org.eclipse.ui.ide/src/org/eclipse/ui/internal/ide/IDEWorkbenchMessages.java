@@ -1,23 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2005, 2015 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- * IBM - Initial API and implementation
- * Benjamin Muskalla - bug 29633
- * Oakland Software Incorporated (Francis Upton) <francisu@ieee.org>
- *		- Bug 224997 [Workbench] Impossible to copy project
- * Dina Sayed, dsayed@eg.ibm.com, IBM -  bug 269844
- * Serge Beauchamp (Freescale Semiconductor) - [252996] Resource filters
- *     Markus Schorn (Wind River Systems) -  bug 284447
- *     James Blackburn (Broadcom Corp.)   -  bug 340978
- * Christian Georgi (SAP) - Bug 423882 - Warn user if workspace is newer than IDE
- * Lars Vogel <Lars.Vogel@vogella.com> - Bug 431862
- * Christian Georgi (SAP SE)           - bug 432480, bug 458811
- *******************************************************************************/
 package org.eclipse.ui.internal.ide;
 
 import org.eclipse.osgi.util.NLS;
@@ -25,6 +5,10 @@ import org.eclipse.osgi.util.NLS;
 public class IDEWorkbenchMessages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.ui.internal.ide.messages";//$NON-NLS-1$
 	// package: org.eclipse.ui.ide
+
+    public static String CopyFilesAndFoldersOperation_copyNameOneArg = null;
+
+    public static String CopyFilesAndFoldersOperation_copyNameTwoArgs = null;
 
 	public static String IDEWorkbenchAdvisor_noPerspective;
 	public static String IDEWorkbenchAdvisor_cancelHistoryPruning;

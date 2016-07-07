@@ -21,6 +21,7 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.DoubleClickEvent;
@@ -45,14 +46,15 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.internal.ide.misc.ContainerContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.ui.part.DrillDownComposite;
+import org.eclipse.ui.internal.ide.misc.ContainerContentProvider;
 
 
 /**
  * Workbench-level composite for choosing a container.
  */
+@SuppressWarnings("serial")
 public class ContainerSelectionGroup extends Composite
 {
     // The listener to notify of events
@@ -72,8 +74,10 @@ public class ContainerSelectionGroup extends Composite
 
     TreeViewer                  _treeViewer;
 
-    private Menu                _treeMenu;
-    private MenuItem            _menuItem;
+    @SuppressWarnings("unused")
+	private Menu                _treeMenu;
+    @SuppressWarnings("unused")
+	private MenuItem            _menuItem;
     private Button              _btnCreateProject;
     // the message to display at the top of this dialog
     private static final String DEFAULT_MSG_NEW_ALLOWED      = Messages.ContainerGroup_message; //$NON-NLS-1$
@@ -261,7 +265,7 @@ public class ContainerSelectionGroup extends Composite
         // Create tree viewer inside drill down.
         _treeViewer = new TreeViewer(drillDown, SWT.NONE);
         drillDown.setChildTree(_treeViewer);
-        ContainerContentProvider cp = new ContainerContentProvider();
+        ContainerContentProvider cp = new ContainerContentProvider();     
         cp.showClosedProjects(_showClosedProjects);
         _treeViewer.setContentProvider(cp);
         _treeViewer.setLabelProvider(WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider());
@@ -298,10 +302,10 @@ public class ContainerSelectionGroup extends Composite
 
         MenuManager mgr = new MenuManager();
         //        mgr.add(new Action("Save Result Set..."){});
-        mgr.add(new CreateProjectAction(_treeViewer));
+        mgr.add((IAction) new CreateProjectAction(_treeViewer));
         CreateFolderAction createFolderAction = new CreateFolderAction(_treeViewer);
-        _treeViewer.addSelectionChangedListener(createFolderAction);
-        mgr.add(createFolderAction);
+        _treeViewer.addSelectionChangedListener((ISelectionChangedListener) createFolderAction);
+        mgr.add((IAction) createFolderAction);
 
         Menu menu = mgr.createContextMenu(_treeViewer.getTree());
         _treeViewer.getTree().setMenu(menu);
@@ -353,7 +357,8 @@ public class ContainerSelectionGroup extends Composite
     /**
      * Sets the selected existing container.
      */
-    public void setSelectedContainer(IContainer container)
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	public void setSelectedContainer(IContainer container)
     {
         _selectedContainer = container;
 
@@ -369,7 +374,8 @@ public class ContainerSelectionGroup extends Composite
         _treeViewer.setSelection(new StructuredSelection(container), true);
     }
 
-    private class MenuItemSelectionListener extends SelectionAdapter
+    @SuppressWarnings("unused")
+	private class MenuItemSelectionListener extends SelectionAdapter
     {
         public void widgetSelected(SelectionEvent e)
         {
