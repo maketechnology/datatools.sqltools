@@ -282,23 +282,23 @@ public class IDEWorkbenchPlugin extends AbstractUIPlugin {
      *
      * @return a possibly empty list of about infos
      */
-//    public AboutInfo[] getFeatureInfos() {
-//        // cannot be cached since bundle groups come and go
-//        List infos = new ArrayList();
-//
-//        // add an entry for each bundle group
-//        IBundleGroupProvider[] providers = Platform.getBundleGroupProviders();
-//        if (providers != null) {
-//			for (int i = 0; i < providers.length; ++i) {
-//                IBundleGroup[] bundleGroups = providers[i].getBundleGroups();
-//                for (int j = 0; j < bundleGroups.length; ++j) {
-//					infos.add(new AboutInfo(bundleGroups[j]));
-//				}
-//            }
-//		}
-//
-//        return (AboutInfo[]) infos.toArray(new AboutInfo[infos.size()]);
-//    }
+    public AboutInfo[] getFeatureInfos() {
+        // cannot be cached since bundle groups come and go
+        List infos = new ArrayList();
+
+        // add an entry for each bundle group
+        IBundleGroupProvider[] providers = Platform.getBundleGroupProviders();
+        if (providers != null) {
+			for (int i = 0; i < providers.length; ++i) {
+                IBundleGroup[] bundleGroups = providers[i].getBundleGroups();
+                for (int j = 0; j < bundleGroups.length; ++j) {
+					infos.add(new AboutInfo(bundleGroups[j]));
+				}
+            }
+		}
+
+        return (AboutInfo[]) infos.toArray(new AboutInfo[infos.size()]);
+    }
 
     /**
      * Returns the about information of the primary feature.
